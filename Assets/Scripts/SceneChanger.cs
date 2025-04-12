@@ -5,18 +5,24 @@ using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
-    public string sceneToLoad = "PoppyTownScene";
     public float fadeDuration = 1f;
 
     private Image fadeImage;
     private bool isFading = false;
 
     // player spawning
-    public Transform spawnInit; // init from that scene
-    public Transform spawnExit; // exit from that scene
+    [Header("Previous Scenes")]
+    public Transform prev_train; 
+    public Transform prev_town;
+    public Transform prev_mayor;
+    public Transform prev_forest;
+    public Transform prev_crops;
+    public Transform prev_mchouse;
 
     private GameObject player;
     private PlayerController playerController;
+
+    private string sceneToLoad;
 
     private void Start()
     {
@@ -42,29 +48,59 @@ public class SceneChanger : MonoBehaviour
             switch (playerController.prevScene)
             {
                 case "TrainStationScene":
-                    player.transform.position = spawnInit.position;
+                    if (prev_train != null)
+                        player.transform.position = prev_train.position;
+                    else
+                        Debug.LogWarning("prev_train is null!");
                     break;
+
                 case "PoppyTownScene":
-                    player.transform.position = spawnExit.position;
+                    if (prev_town != null)
+                        player.transform.position = prev_town.position;
+                    else
+                        Debug.LogWarning("prev_town is null!");
                     break;
+
+                case "MayorHouseScene":
+                    if (prev_mayor != null)
+                        player.transform.position = prev_mayor.position;
+                    else
+                        Debug.LogWarning("prev_mayor is null!");
+                    break;
+
+                case "CropsScene":
+                    if (prev_crops != null)
+                        player.transform.position = prev_crops.position;
+                    else
+                        Debug.LogWarning("prev_crops is null!");
+                    break;
+
+                case "ForestScene":
+                    if (prev_forest != null)
+                        player.transform.position = prev_forest.position;
+                    else
+                        Debug.LogWarning("prev_forest is null!");
+                    break;
+
+                case "MCHouseScene":
+                    if (prev_mchouse != null)
+                        player.transform.position = prev_mchouse.position;
+                    else
+                        Debug.LogWarning("prev_mchouse is null!");
+                    break;
+
                 default:
-                    player.transform.position = spawnInit.position;
                     break;
             }
+
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void triggerCollision(string new_scene)
     {
-        if (!isFading && collision.CompareTag("Player"))
+        if (!isFading)
         {
-            // Get the current scene name
-            string currentScene = SceneManager.GetActiveScene().name;
-
-            // Set the variable prevScene inside the player
-            playerController.prevScene = currentScene;
-            Debug.Log("updated prev scene to: " + currentScene);
-
+            sceneToLoad = new_scene;
             StartCoroutine(FadeAndChangeScene());
         }
     }

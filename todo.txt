@@ -1,0 +1,11 @@
+
+camera follows user
+Hacer interactable object animation + sonido
+Hacer menú con posibles endings
+Hacer sonidos y sound manager
+
+----------- done pero no actualizado en github
+Acabar escenas
+
+----------- done
+Subir github

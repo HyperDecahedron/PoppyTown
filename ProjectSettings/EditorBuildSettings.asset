@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MayorHouseScene.unity
     guid: e923a02f64ea7b649be9ac963c077536
+  - enabled: 1
+    path: Assets/Scenes/ForestScene.unity
+    guid: 390cd37fdd47e544cace45b832b06ed9
+  - enabled: 1
+    path: Assets/Scenes/CropsScene.unity
+    guid: 55f70f0580c0f8e45a6401ad819dbc17
+  - enabled: 1
+    path: Assets/Scenes/MCHouseScene.unity
+    guid: f1c4b0e044fdf1d4db7af2cd91a3cc7e
   m_configObjects: {}
