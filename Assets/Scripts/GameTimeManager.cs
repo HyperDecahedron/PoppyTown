@@ -6,6 +6,7 @@ using System.Collections;
 
 public class GameTimeManager : MonoBehaviour
 {
+    // ----------------------------------------------------------------------------
     [Header("Time Settings")]
     [Tooltip("Starting hour (0-23)")]
     [Range(0, 23)]
@@ -15,12 +16,15 @@ public class GameTimeManager : MonoBehaviour
     [Min(0.1f)]
     public float realMinutesPerGameDay = 20f; // 20 real minutes = 24 game hours
 
-    [Header("Display Settings")]
-    public Text timeDisplay; 
     [Tooltip("How often (in in-game minutes) to update the display")]
     public int displayUpdateInterval = 15; // Only update every 15 in-game minutes
+
+    // ----------------------------------------------------------------------------
+    [Header("Display Settings")]
+    public Text timeDisplay; 
     public int creepiness = 1; // default 1
-    public SpriteRenderer sunSpriteRenderer;
+    public Image sunImage;
+
     public Volume stage1Volume;
     public Volume stage2Volume;
     public Volume stage3Volume;
@@ -88,7 +92,7 @@ public class GameTimeManager : MonoBehaviour
             Sprite newSprite = Resources.Load<Sprite>("Visuals/Sun/" + fileName);
 
             if (newSprite != null)
-                sunSpriteRenderer.sprite = newSprite;
+                sunImage.sprite = newSprite;
 
             // Update creepiness
             if (hours == 3 && minutes == 00 && creepiness < 3)

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class SceneChanger : MonoBehaviour
 
     private Image fadeImage;
     private bool isFading = false;
+
+    [Header("Cinemachine Virtual Camera")]
+    public CinemachineVirtualCamera thisSceneCinemachine;
 
     // player spawning
     [Header("Previous Scenes")]
@@ -93,6 +97,14 @@ public class SceneChanger : MonoBehaviour
                     break;
             }
 
+            // put the player as the follow object of the cinemachine camera of this scene (set in the variable above)
+            if (thisSceneCinemachine != null)
+            {
+                thisSceneCinemachine.Follow = player.transform;
+                Debug.Log("Cinemachine follow set");
+            }
+            else
+                Debug.Log("Cinemachine Camera not assigned in SceneChanger!");
         }
     }
 
