@@ -1,9 +1,11 @@
+add pixel perfect: https://assetstore.unity.com/packages/tools/camera/perfect-pixel-camera-by-gg-ez-100000
 
-check que el postprocessing funciona
 Hacer interactable object animation + sonido
 Hacer menú con posibles endings
 Hacer sonidos y sound manager
-moral meter
+implement day / night
+
+interesting UI: https://assetstore.unity.com/packages/2d/gui/fantasy-wooden-gui-free-103811
 
 ----------- done pero no actualizado en github
 Acabar escenas
@@ -11,6 +13,7 @@ Added cinemachine camera to follow the user (make it consistent across scenes)
 added map bounds
 now the time is part of an overlay canvas and always stays on top of the screen no matter the scene
 arreglar que la ui no se queda fija al corner de la pantalla
+moral meter + change day/night UI?
 
 ----------- done
 Subir github
