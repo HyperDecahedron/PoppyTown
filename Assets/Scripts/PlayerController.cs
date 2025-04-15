@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
 
     public string prevScene = "TrainStationScene";
+    public bool canMove = true;
 
     private static PlayerController instance;
 
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (canMove)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }         
     }
 }
