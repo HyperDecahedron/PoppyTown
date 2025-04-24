@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private static PlayerController instance;
 
+    private Animator animator; 
+
     private void Awake()
     {
         // Singleton check to prevent duplicates
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -44,6 +47,18 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+            if(movement.x != 0 || movement.y != 0)
+            {
+                animator.SetBool("isMoving", true);
+                animator.SetFloat("moveX", movement.x);
+                animator.SetFloat("moveY", movement.y);
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
+            
         }         
     }
 }

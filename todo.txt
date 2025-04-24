@@ -1,16 +1,19 @@
-add pixel perfect: https://assetstore.unity.com/packages/tools/camera/perfect-pixel-camera-by-gg-ez-100000
-
+Belzy’s animation
+Sound for the steps in grass or interiors
+If time allows very basic and not functional UI for the endings + UI sound.
+ 
 Hacer interactable object animation + sonido
-Hacer menú con posibles endings
-Hacer sonidos y sound manager
-implement day / night
 add fog
-
-interesting UI: https://assetstore.unity.com/packages/2d/gui/fantasy-wooden-gui-free-103811
+implement day / night
+Hacer sonidos y sound manager
 
 ----------- done pero no actualizado en github
 Implemented logic for the dialogs
 Created UI for the dialogs.
+add pixel perfect: https://assetstore.unity.com/packages/tools/camera/perfect-pixel-camera-by-gg-ez-100000
+Delilah’s animation
+colisiones mayor's house
+change mayor's house to the happy state vs stage 2
 
 ----------- done
 Subir github
