@@ -1,19 +1,14 @@
-Belzy’s animation
-Sound for the steps in grass or interiors
+Interactable objects in mayor house
 If time allows very basic and not functional UI for the endings + UI sound.
- 
+
+Meter el lore de computer graphics
 Hacer interactable object animation + sonido
 add fog
 implement day / night
 Hacer sonidos y sound manager
 
 ----------- done pero no actualizado en github
-Implemented logic for the dialogs
-Created UI for the dialogs.
-add pixel perfect: https://assetstore.unity.com/packages/tools/camera/perfect-pixel-camera-by-gg-ez-100000
-Delilah’s animation
-colisiones mayor's house
-change mayor's house to the happy state vs stage 2
+
 
 ----------- done
 Subir github
@@ -23,3 +18,11 @@ added map bounds
 now the time is part of an overlay canvas and always stays on top of the screen no matter the scene
 arreglar que la ui no se queda fija al corner de la pantalla
 moral meter + change day/night UI?
+Implemented logic for the dialogs
+add pixel perfect: https://assetstore.unity.com/packages/tools/camera/perfect-pixel-camera-by-gg-ez-100000
+Created UI for the dialogs.
+Delilah’s animation
+colisiones mayor's house
+change mayor's house to the happy state vs stage 2
+Belzy’s animation
+Sound for the steps in grass or interiors

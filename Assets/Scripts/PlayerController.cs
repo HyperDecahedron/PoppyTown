@@ -13,14 +13,24 @@ public class PlayerController : MonoBehaviour
 
     private static PlayerController instance;
 
-    private Animator animator; 
+    private Animator animator;
+
+    [Header("Footstep Audio")]
+    public bool isInterior = false;
+    public List<AudioClip> grassAudios;
+    public List<AudioClip> tilesAudios;
+    private AudioSource audioSource;
+    public float pitchVariation = 0.1f;
+    public float footstepInterval = 0.4f; // Time between footstep sounds
+
+    private float footstepTimer = 0f;
 
     private void Awake()
     {
         // Singleton check to prevent duplicates
         if (instance != null && instance != this)
         {
-            Destroy(gameObject); // A player already exists, destroy this one
+            Destroy(gameObject);
             return;
         }
 
@@ -32,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -48,17 +59,36 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-            if(movement.x != 0 || movement.y != 0)
+            if (movement.x != 0 || movement.y != 0)
             {
                 animator.SetBool("isMoving", true);
                 animator.SetFloat("moveX", movement.x);
                 animator.SetFloat("moveY", movement.y);
+
+                footstepTimer -= Time.fixedDeltaTime;
+                if (footstepTimer <= 0f)
+                {
+                    PlayFootstep();
+                    footstepTimer = footstepInterval;
+                }
             }
             else
             {
                 animator.SetBool("isMoving", false);
+                footstepTimer = 0f;
             }
-            
-        }         
+        }
+    }
+
+    private void PlayFootstep()
+    {
+        List<AudioClip> currentClips = isInterior ? tilesAudios : grassAudios;
+
+        if (currentClips.Count == 0 || audioSource == null)
+            return;
+
+        AudioClip clip = currentClips[Random.Range(0, currentClips.Count)];
+        audioSource.pitch = 1f + Random.Range(-pitchVariation, pitchVariation);
+        audioSource.PlayOneShot(clip);
     }
 }

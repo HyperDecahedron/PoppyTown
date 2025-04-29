@@ -105,6 +105,18 @@ public class SceneChanger : MonoBehaviour
             }
             else
                 Debug.Log("Cinemachine Camera not assigned in SceneChanger!");
+
+            // Update sound of the steps if inside interior
+            string this_scene = SceneManager.GetActiveScene().name;
+
+            if (this_scene == "MCHouseScene" || this_scene == "MayorHouseScene")
+            {
+                playerController.isInterior = true;
+            }
+            else
+            {
+                playerController.isInterior = false;
+            }
         }
     }
 
