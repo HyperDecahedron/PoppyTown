@@ -1,5 +1,3 @@
-Interactable objects in mayor house
-If time allows very basic and not functional UI for the endings + UI sound.
 
 Meter el lore de computer graphics
 Hacer interactable object animation + sonido
@@ -8,7 +6,9 @@ implement day / night
 Hacer sonidos y sound manager
 
 ----------- done pero no actualizado en github
-
+He hecho los visuals del diario y la logica con los diferentes tabs and with sounds
+Interactable objects in mayor house
+finished intro scene with the glitches
 
 ----------- done
 Subir github

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MCHouseScene.unity
     guid: f1c4b0e044fdf1d4db7af2cd91a3cc7e
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: dd60e74a7cf35794dbda6e1b0b3145f6
   m_configObjects: {}
