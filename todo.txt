@@ -1,4 +1,3 @@
-
 Meter el lore de computer graphics
 Hacer interactable object animation + sonido
 add fog
@@ -9,6 +8,7 @@ Hacer sonidos y sound manager
 He hecho los visuals del diario y la logica con los diferentes tabs and with sounds
 Interactable objects in mayor house
 finished intro scene with the glitches
+finished cutscene!
 
 ----------- done
 Subir github

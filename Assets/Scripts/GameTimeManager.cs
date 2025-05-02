@@ -34,21 +34,6 @@ public class GameTimeManager : MonoBehaviour
     private float lastDisplayedMinutes;
     private float gameMinutesPerRealSecond;
 
-    private static GameTimeManager instance;
-
-    private void Awake()
-    {
-        // Singleton check to prevent duplicates
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject); // An object already exists, destroy this one
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
     void Start()
     {
         // Initialize time

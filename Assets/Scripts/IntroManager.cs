@@ -1,16 +1,28 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Required for scene loading
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;  // Required for UI elements like Image
 
 public class IntroManager : MonoBehaviour
 {
+    public GameObject glitch;
     public GameObject postprocessing;
     public ScaleInOut panelButton;
+    public Image fadeImage;  // Assign this in the inspector (a full-screen black image)
+
     private bool hasStarted = false;
 
     void Start()
     {
         postprocessing.SetActive(false);
+        glitch.SetActive(false);
+        if (fadeImage != null)
+        {
+            // Ensure the image is fully transparent at the start
+            Color color = fadeImage.color;
+            color.a = 0f;
+            fadeImage.color = color;
+        }
     }
 
     void Update()
@@ -25,13 +37,39 @@ public class IntroManager : MonoBehaviour
     private IEnumerator PlayIntroSequence()
     {
         panelButton.stop = true;
+
+        glitch.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        glitch.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        glitch.SetActive(true);
         postprocessing.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         postprocessing.SetActive(false);
         yield return new WaitForSeconds(1f);
+        glitch.SetActive(false);
         postprocessing.SetActive(true);
-        yield return new WaitForSeconds(3f);                
+        yield return new WaitForSeconds(3f);
 
-        SceneManager.LoadScene("TrainStationScene");
+        // Start fade to black
+        yield return StartCoroutine(FadeToBlack());
+
+        SceneManager.LoadScene("CutScene");
+    }
+
+    private IEnumerator FadeToBlack()
+    {
+        float duration = 2f; // Fade duration
+        float elapsed = 0f;
+
+        Color color = fadeImage.color;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsed / duration);
+            fadeImage.color = color;
+            yield return null;
+        }
     }
 }

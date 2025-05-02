@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dialog
+  - CutSceneManager
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
 
     public string prevScene = "TrainStationScene";
-    public bool canMove = true;
 
     private static PlayerController instance;
 
@@ -24,6 +23,10 @@ public class PlayerController : MonoBehaviour
     public float footstepInterval = 0.4f; // Time between footstep sounds
 
     private float footstepTimer = 0f;
+
+    public bool canMove = false;
+    private bool isFakeMoving = true;
+    private Vector2 fakeMovement;
 
     private void Awake()
     {
@@ -47,15 +50,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!isFakeMoving)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        if (movement.x != 0) movement.y = 0; // Prevent diagonal movement
+            if (movement.x != 0) movement.y = 0; // Prevent diagonal movement
+        }  
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
+        if (canMove || isFakeMoving)
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
@@ -90,5 +96,25 @@ public class PlayerController : MonoBehaviour
         AudioClip clip = currentClips[Random.Range(0, currentClips.Count)];
         audioSource.pitch = 1f + Random.Range(-pitchVariation, pitchVariation);
         audioSource.PlayOneShot(clip);
+    }
+
+    public void FakeRightMovement()
+    {
+        if (rb == null || animator == null) return;
+
+        isFakeMoving = true;
+        canMove = false;
+        movement.x = 1;
+        movement.y = 0;
+    }
+
+    public void StopFakeMovement()
+    {
+        isFakeMoving = false;
+        canMove = false;
+        movement.x = 0; 
+        movement.y = 0;
+        animator.SetBool("isMoving", false);
+        footstepTimer = 0f;
     }
 }
