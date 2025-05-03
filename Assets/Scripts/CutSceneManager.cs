@@ -17,6 +17,17 @@ public class CutSceneManager : MonoBehaviour
 
     public float typingSpeed = 0.04f;
 
+    [Header("Dialog objects")]
+    public GameObject polina_panel;
+    public Text polina_text;
+    public GameObject belzy_panel;
+    public Text belzy_text1;
+    public Text belzy_text2;
+
+    private string p_text;
+    private string b_text1; 
+    private string b_text2;
+
     private string[] lines = new string[]
     {
         "I received a letter a week ago.",
@@ -48,6 +59,14 @@ public class CutSceneManager : MonoBehaviour
             playerController = player.GetComponent<PlayerController>();
             playerController.canMove = false; 
         }
+
+        // dialog settings
+        polina_panel.SetActive(false);
+        belzy_panel.SetActive(false);
+
+        b_text1 = belzy_text1.text;
+        b_text2 = belzy_text2.text;
+        p_text = polina_text.text;
 
         StartCoroutine(TypeLine());      
     }
@@ -125,19 +144,66 @@ public class CutSceneManager : MonoBehaviour
         playerController.FakeRightMovement();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TriggerDetected()
     {
-        if (other.CompareTag("Player"))
-        {
-            StartCoroutine(HandleFakeMovementStopAndFadeIn());
-        }
+        // start Dialog corroutine
+        StartCoroutine(DialogCoroutine());
     }
 
-    IEnumerator HandleFakeMovementStopAndFadeIn()
+    IEnumerator DialogCoroutine()
     {
+        // stop fake movement
         playerController.StopFakeMovement();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
+        polina_text.gameObject.SetActive(true);
+        belzy_text1.gameObject.SetActive(true);
+        belzy_text2.gameObject.SetActive(true);
+        belzy_text1.text = "";
+        belzy_text2.text = "";
+        polina_text.text = "";
+
+        // dialog polina
+        polina_panel.SetActive(true);
+
+        string line = p_text;
+        foreach (char letter in line)
+        {
+            polina_text.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        yield return new WaitForSeconds(2.5f);
+        polina_panel.SetActive(false);
+
+        // dialog belzy
+        belzy_panel.SetActive(true);
+
+        line = b_text1;
+        foreach (char letter in line)
+        {
+            belzy_text1.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(2.5f);
+        belzy_text1.text = "";
+
+        line = b_text2;
+        foreach (char letter in line)
+        {
+            belzy_text2.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        yield return new WaitForSeconds(2.5f);
+        
+        belzy_panel.SetActive(false);
+
+        // fade in cutscene
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator FadeIn()
+    {
         // black background appears
         float duration = 2f;
         float elapsed = 0f;
@@ -180,6 +246,9 @@ public class CutSceneManager : MonoBehaviour
         diaryManager.ResetDiaryPosition();
         TimeUI.SetActive(true);
         playerController.canMove = true;
+        playerController.isFakeMoving = false;
+
+        playerController.prevScene = "CutScene";
 
         SceneManager.LoadScene("MCHouseScene");
     }

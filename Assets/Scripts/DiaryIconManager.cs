@@ -141,6 +141,8 @@ public class DiaryIconManager : MonoBehaviour
             yield return new WaitForSeconds(delay);  // Wait for the specified delay
         }
 
+        yield return new WaitForSeconds(1f);
+
         // If there's a callback, execute it after the typewriter effect finishes
         onComplete?.Invoke();
     }

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private float footstepTimer = 0f;
 
     public bool canMove = false;
-    private bool isFakeMoving = true;
+    public bool isFakeMoving = true;
     private Vector2 fakeMovement;
 
     private void Awake()

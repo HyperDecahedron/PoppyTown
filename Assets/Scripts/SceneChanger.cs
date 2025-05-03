@@ -16,12 +16,13 @@ public class SceneChanger : MonoBehaviour
 
     // player spawning
     [Header("Previous Scenes")]
-    public Transform prev_train; 
+    public Transform prev_train;
     public Transform prev_town;
     public Transform prev_mayor;
     public Transform prev_forest;
     public Transform prev_crops;
     public Transform prev_mchouse;
+    public Transform prev_cutscene;
 
     private GameObject player;
     private PlayerController playerController;
@@ -91,6 +92,13 @@ public class SceneChanger : MonoBehaviour
                         player.transform.position = prev_mchouse.position;
                     else
                         Debug.LogWarning("prev_mchouse is null!");
+                    break;
+
+                case "CutScene":
+                    if (prev_cutscene != null)
+                        player.transform.position = prev_cutscene.position;
+                    else
+                        Debug.LogWarning("prev_cutscene is null!");
                     break;
 
                 default:
