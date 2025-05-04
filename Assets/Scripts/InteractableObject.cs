@@ -6,12 +6,16 @@ public class InteractableObject : MonoBehaviour
 {
     public string text;
     public GameObject Ebutton;
+    public AudioClip button_sound;
+    private AudioSource audioSource;
 
     private DialogManager dialogManager;
     private bool playerInRange = false;
 
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
+
         // Find the object tagged "Dialog" and get the DialogManager component
         GameObject dialogObject = GameObject.FindGameObjectWithTag("Dialog");
         if (dialogObject != null)
@@ -49,6 +53,7 @@ public class InteractableObject : MonoBehaviour
             if (dialogManager != null)
             {
                 Ebutton.SetActive(false);
+                audioSource.PlayOneShot(button_sound, 0.8f);
                 dialogManager.SetDialog(text);
                 playerInRange = false;
             }

@@ -9,6 +9,7 @@ He hecho los visuals del diario y la logica con los diferentes tabs and with sou
 Interactable objects in mayor house
 finished intro scene with the glitches
 finished cutscene!
+sound design for interactable objects, intro glitches, sound for each character when dialog.
 
 ----------- done
 Subir github

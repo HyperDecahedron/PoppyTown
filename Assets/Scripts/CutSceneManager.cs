@@ -28,6 +28,12 @@ public class CutSceneManager : MonoBehaviour
     private string b_text1; 
     private string b_text2;
 
+    [Header("Audio")]
+    public AudioClip button_sound;
+    public AudioClip polina_sound;
+    public AudioClip belzy_sound;
+    private AudioSource audioSource;
+
     private string[] lines = new string[]
     {
         "I received a letter a week ago.",
@@ -47,6 +53,8 @@ public class CutSceneManager : MonoBehaviour
 
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
+
         // Set black background at start
         blackBackground.color = Color.black;
         cutSceneText.text = "";
@@ -80,6 +88,7 @@ public class CutSceneManager : MonoBehaviour
             if (lineFullyDisplayed)
             {
                 EObject.SetActive(false);
+                audioSource.PlayOneShot(button_sound, 0.6f);
                 currentLine++;
 
                 if (currentLine < lines.Length)
@@ -97,6 +106,10 @@ public class CutSceneManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (QObject.activeSelf)
+            {
+                audioSource.PlayOneShot(button_sound);
+            }
             QObject.SetActive(false);
         }
 
@@ -165,6 +178,7 @@ public class CutSceneManager : MonoBehaviour
 
         // dialog polina
         polina_panel.SetActive(true);
+        audioSource.PlayOneShot(polina_sound, 0.2f);
 
         string line = p_text;
         foreach (char letter in line)
@@ -178,6 +192,7 @@ public class CutSceneManager : MonoBehaviour
 
         // dialog belzy
         belzy_panel.SetActive(true);
+        audioSource.PlayOneShot(belzy_sound, 0.3f);
 
         line = b_text1;
         foreach (char letter in line)

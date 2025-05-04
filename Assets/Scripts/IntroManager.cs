@@ -10,10 +10,16 @@ public class IntroManager : MonoBehaviour
     public ScaleInOut panelButton;
     public Image fadeImage;  // Assign this in the inspector (a full-screen black image)
 
+    public AudioClip glitch_short;
+    public AudioClip glitch_long;
+    private AudioSource audioSource;
+
     private bool hasStarted = false;
 
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
+
         postprocessing.SetActive(false);
         glitch.SetActive(false);
         if (fadeImage != null)
@@ -36,19 +42,26 @@ public class IntroManager : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
+        float volume = 0.5f; 
         panelButton.stop = true;
 
         glitch.SetActive(true);
+        audioSource.PlayOneShot(glitch_short, volume);
         yield return new WaitForSeconds(1f);
+
         glitch.SetActive(false);
         yield return new WaitForSeconds(0.5f);
 
         glitch.SetActive(true);
+        audioSource.PlayOneShot(glitch_short, volume);
         postprocessing.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+
         postprocessing.SetActive(false);
         yield return new WaitForSeconds(1f);
+
         glitch.SetActive(false);
+        audioSource.PlayOneShot(glitch_long, volume);
         postprocessing.SetActive(true);
         yield return new WaitForSeconds(3f);
 
