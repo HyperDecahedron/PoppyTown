@@ -66,11 +66,16 @@ public class Dante : MonoBehaviour
                 Ebutton.SetActive(false);
                 playerInRange = false;
 
-                if (!playerController.farming_task)
+                if (playerController.state == 0)
                 {
                     // set dialog for dante farming task
                     audioSource.PlayOneShot(dante_sound, 0.3f);
                     dialogManager.SetTaskDialog("dante", "farming");
+                }
+                else if(playerController.state == 1)
+                {
+                    audioSource.PlayOneShot(dante_sound, 0.3f);
+                    dialogManager.SetTaskDialog("dante", "farming2");
                 }
   
             }

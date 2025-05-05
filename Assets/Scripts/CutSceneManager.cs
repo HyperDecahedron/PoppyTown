@@ -11,6 +11,7 @@ public class CutSceneManager : MonoBehaviour
     public GameObject EObject;
     public GameObject QObject;
     public DiaryIconManager diaryManager;
+    public GameObject panelLetter;
 
     // to set active before changing the scene
     public GameObject TimeUI;
@@ -38,11 +39,12 @@ public class CutSceneManager : MonoBehaviour
     {
         "I received a letter a week ago.",
         "It was from my younger sister, Mary.",
+        "  ",
         "We haven’t spoken in years, not since everything fell apart between us.",
-        "And now, out of nowhere, this\nstrange message from her…",
-        "What if something's really wrong?\nWhat if she’s not okay?",
+        "And now, out of nowhere,\nthis strange letter…",
+        "This is unlike her...\nWhat if she’s not okay?",
         "Mary...",
-        "I wish I could see you again in Poppy Town.",
+        "Tomorrow I'll embark on a journey to Poppy Town.\nI wish to see you again.",
     };
 
     private int currentLine = 0;
@@ -54,6 +56,7 @@ public class CutSceneManager : MonoBehaviour
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
+        panelLetter.SetActive(false);
 
         // Set black background at start
         blackBackground.color = Color.black;
@@ -87,6 +90,15 @@ public class CutSceneManager : MonoBehaviour
 
             if (lineFullyDisplayed)
             {
+                if (currentLine == 1)
+                {
+                    StartCoroutine(ResizeLetterPanel());
+                }
+                else if (currentLine == 2)
+                {
+                    panelLetter.SetActive(false);
+                }
+
                 EObject.SetActive(false);
                 audioSource.PlayOneShot(button_sound, 0.6f);
                 currentLine++;
@@ -267,4 +279,31 @@ public class CutSceneManager : MonoBehaviour
 
         SceneManager.LoadScene("MCHouseScene");
     }
+
+
+    IEnumerator ResizeLetterPanel()
+    {
+        panelLetter.SetActive(true);
+
+        // Set initial scale to Y = 0
+        Vector3 initialScale = new Vector3(panelLetter.transform.localScale.x, 0f, panelLetter.transform.localScale.z);
+        // Target scale is Y = 1
+        Vector3 targetScale = new Vector3(panelLetter.transform.localScale.x, 1f, panelLetter.transform.localScale.z);
+
+        // Resize panelLetter from Y = 0 to Y = 1 in 0.5s
+        float timeElapsed = 0f;
+        while (timeElapsed < 0.5f)
+        {
+            timeElapsed += Time.deltaTime;
+            panelLetter.transform.localScale = Vector3.Lerp(initialScale, targetScale, timeElapsed / 0.5f);
+            yield return null;
+        }
+
+        panelLetter.transform.localScale = targetScale;
+
+        // Re-enable the E button to continue
+        EObject.SetActive(true);
+    }
+
+
 }

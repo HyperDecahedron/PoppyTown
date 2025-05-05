@@ -12,6 +12,9 @@ public class InteractableObject : MonoBehaviour
     private DialogManager dialogManager;
     private bool playerInRange = false;
 
+    public bool isQuestItem = false;
+    public string name;
+
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
@@ -54,8 +57,28 @@ public class InteractableObject : MonoBehaviour
             {
                 Ebutton.SetActive(false);
                 audioSource.PlayOneShot(button_sound, 0.8f);
-                dialogManager.SetDialog(text);
+                dialogManager.SetDialog(text, null, null, !isQuestItem); // if it is quest item, set type to false
                 playerInRange = false;
+
+                if (isQuestItem)
+                {
+                    // Get player controller
+                    GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                    if (playerObject != null)
+                    {
+                        PlayerController playerController = playerObject.GetComponent<PlayerController>();
+                        if (name == "watering_can")
+                            playerController.has_watering_can = true;
+                        else if (name == "seeds")
+                            playerController.has_seeds = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Character: PlayerController not found");
+                    }
+
+                    this.transform.parent.gameObject.SetActive(false);
+                }
             }
         }
     }

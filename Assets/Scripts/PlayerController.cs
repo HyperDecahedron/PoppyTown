@@ -29,9 +29,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 fakeMovement;
 
     [Header("Story variables")]
-    public bool farming_task = false;
-    public bool harvest_task = false;
-    public bool fountain_task = false;
+    public int state = 0;
+
+    // 0: didn't accept any task
+    // 1: accepted farming
+    // 2: finished farming
+
+    // 3: ...
+
+
+    // quest items
+    public bool has_watering_can = false;
+    public bool has_seeds = false;
 
     private void Awake()
     {
