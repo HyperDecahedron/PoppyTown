@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
     public bool isFakeMoving = true;
     private Vector2 fakeMovement;
 
+    [Header("Story variables")]
+    public bool farming_task = false;
+    public bool harvest_task = false;
+    public bool fountain_task = false;
+
     private void Awake()
     {
         // Singleton check to prevent duplicates

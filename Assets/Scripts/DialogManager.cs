@@ -27,6 +27,19 @@ public class DialogManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private string fullText;
+    private float typingSpeed = 0.03f;
+
+    // Characters Dialog
+    // DANTE
+    private string[] dante_farming = new string[]
+    {
+        "Say, Delilah! Perhaps you could assist me? I've just finished tilling this soil, could you bring me some planting supplies?", // dante
+        "Sure, what do you need?", // delilah 1
+        "Sorry, not right now", // delilah 2
+        "I need a <b>watering can, Poppy seeds and a bucket of nutrition</b>. They should all be located around the crops!", // dante 1
+        "Oh, well maybe next time then...", // dante 2
+    };
+
 
     void Start()
     {
@@ -42,6 +55,7 @@ public class DialogManager : MonoBehaviour
         option2.SetActive(false);
         imageE.SetActive(false);
 
+        // Get player controller
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -52,6 +66,37 @@ public class DialogManager : MonoBehaviour
             Debug.Log("Character: PlayerController not found");
         }
     }
+
+    public void SetTaskDialog(string character, string task)
+    {
+        if (character == "dante")
+        {
+            if (task == "farming")
+            {
+                SetDialog(dante_farming[0], dante_farming[1], dante_farming[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        typingSpeed = 0.01f;
+                        SetDialog(dante_farming[3]);
+
+                        // the player is doing the farming task
+                        playerController.farming_task = true;
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(dante_farming[4]);
+                    }
+                }));
+            }
+        }
+
+        typingSpeed = 0.03f;
+
+    }
+
 
     public void SetDialog(string main, string op1 = null, string op2 = null)
     {
@@ -71,7 +116,7 @@ public class DialogManager : MonoBehaviour
             option1.SetActive(true);
             option2.SetActive(true);
 
-            selector1.SetActive(true);
+            selector1.SetActive(true); // always show selected option 1 first
             selector2.SetActive(false);
 
             imageE.SetActive(false);
@@ -93,6 +138,7 @@ public class DialogManager : MonoBehaviour
         DialogCanvas.SetActive(true);
     }
 
+
     private IEnumerator TypeText(string textToType)
     {
         isTyping = true;
@@ -100,7 +146,7 @@ public class DialogManager : MonoBehaviour
         foreach (char c in textToType)
         {
             mainText.text += c;
-            yield return new WaitForSeconds(0.03f); // Typing speed
+            yield return new WaitForSeconds(typingSpeed); 
         }
         isTyping = false;
     }
@@ -147,7 +193,7 @@ public class DialogManager : MonoBehaviour
 
                 imageE.SetActive(true);
 
-                SetDialog("I'm just a farmer."); // triggers typing again
+                //SetDialog("I'm just a farmer."); // triggers typing again
             }
         }
         else
@@ -160,4 +206,14 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator WaitForOptionSelection(System.Action<int> onSelected)
+    {
+        while (selectionMode || isTyping)
+        {
+            yield return null;
+        }
+        onSelected(selectedOption);
+    }
+
 }

@@ -3603,7 +3603,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.046875
+  orthographic size: 4.046875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3628,7 +3628,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.903952, y: -0.74915004, z: -10}
+  m_LocalPosition: {x: -9.987155, y: -0.79602003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3751,7 +3751,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 28
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -3761,7 +3761,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 0.5
   m_Text: Looking for someone...
 --- !u!222 &544396905
 CanvasRenderer:
@@ -5533,7 +5533,7 @@ MonoBehaviour:
   belzy_text2: {fileID: 1887650398}
   button_sound: {fileID: 8300000, guid: df16c60bf82862f4681d934a46d55643, type: 3}
   polina_sound: {fileID: 8300000, guid: 0ced5eef7b00abf4ea4c41990d46697f, type: 3}
-  belzy_sound: {fileID: 8300000, guid: b4d9650fd8788a24b8f643024997815c, type: 3}
+  belzy_sound: {fileID: 8300000, guid: 6ca8fdf7ead5a404b801c3bd54443a5a, type: 3}
 --- !u!4 &1038122340
 Transform:
   m_ObjectHideFlags: 0
@@ -7998,7 +7998,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 28
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -8008,8 +8008,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Just passing through.
+    m_LineSpacing: 0.5
+  m_Text: Yes, he asked me to find a few items to help with planting more crops.
 --- !u!222 &1890853636
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8599,7 +8599,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 50
@@ -8687,9 +8687,10 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Ah, a traveler! Not many come through these parts anymore. What brings
-    you to our village?
+    m_LineSpacing: 0.8
+  m_Text: Happened to her..? Why would anything have happened to her? Are you quite
+    alright Delilah? I'm sure that Mary is fine wherever she is! Speaking of the
+    Poppy Fields, better run off and get those supplies to Dante!
 --- !u!222 &2139809871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9464,6 +9465,9 @@ MonoBehaviour:
   footstepInterval: 0.4
   canMove: 1
   isFakeMoving: 1
+  farming_task: 0
+  harvest_task: 0
+  fountain_task: 0
 --- !u!212 &5266396926720630245
 SpriteRenderer:
   m_ObjectHideFlags: 0
