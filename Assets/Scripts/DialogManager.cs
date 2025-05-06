@@ -50,6 +50,45 @@ public class DialogManager : MonoBehaviour
         "Oh, well maybe next time then...", // dante 2
     };
 
+    // POLINA
+    private string[] polina_farming = new string[]
+    {
+     /*0*/   "How is your search for the farming supplies going?", // polina
+     /*1*/   "I've found all the items!", // delilah 1
+     /*2*/   "Actually, I wanted to ask about my sister...", // delilah 2
+     /*3*/   "Wonderful to hear! Head back to the Poppy Fields and let Dante know!", // polina 1
+     /*4*/   "Oh? What about your sister?", // polina 2
+     /*5*/   "My sister sent me a letter from here, I'm trying to find her.", // delilah 3
+     /*6*/   "Mary, I have reason to believe she's here in town.", // delilah 4
+     /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
+     /*8*/   "Oh? Who is your sister? Maybe I know her and can be of assistance?",
+     /*9*/   "Her name is Mary.",
+     /*10*/   "Her name is May.",
+    };
+
+    private string[] polina_fountain = new string[]
+   {
+     /*0*/   "Hey Delilah! Could you maybe assist me with something? If it's not too much of an issue that is!", // 
+     /*1*/   "Sure, what do you need?", // 
+     /*2*/   "Sorry, not right now", //
+     /*3*/   "Oh, thank you! Our fountain needs some cleaning up, more than I was able to do yesterday. Please grab a <b>sponge</b> and <b>clean away any grime on the fountains to the north</b>!", // 
+     /*4*/   "Oh, well that's okay. I guess I can try to manage on my own...",  
+   };
+
+    private string[] template = new string[]
+   {
+     /*0*/   "",  
+     /*1*/   "",
+     /*2*/   "", 
+     /*3*/   "",  
+     /*4*/   "", 
+     /*5*/   "", 
+     /*6*/   "", 
+     /*7*/   "",
+     /*8*/   "",
+     /*9*/   "",
+   };
+
 
     void Start()
     {
@@ -127,6 +166,48 @@ public class DialogManager : MonoBehaviour
                         SetDialog(dante_farming2[5]);
                     }
                 }));
+            }
+        }
+
+        else if(character == "polina")
+        {
+            if(task == "farming")
+            {
+                SetDialog(polina_farming[0], polina_farming[1], polina_farming[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(polina_farming[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(polina_farming[4], polina_farming[5], polina_farming[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            if (selected == 1)
+                            {
+                                SetDialog(polina_farming[8], polina_farming[9], polina_farming[10]);
+
+                                StartCoroutine(WaitForOptionSelection((selected) =>
+                                {
+                                    SetDialog(polina_farming[7]);
+                                }));
+                            }
+                            else if (selected == 2)
+                            {
+                                SetDialog(polina_farming[7]);
+                            }
+                        }));
+                    }
+                }));
+            }
+
+            else if(task == "fountain")
+            {
+
             }
         }
 

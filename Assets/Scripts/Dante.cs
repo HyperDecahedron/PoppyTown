@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dante : MonoBehaviour
 {
     [SerializeField] private GameObject Ebutton;
+    public string character; 
 
     [Header("Audio")]
     public AudioClip dante_sound;
@@ -57,6 +58,18 @@ public class Dante : MonoBehaviour
         }
     }
 
+    // STATES:
+
+    // 0: didn't accept any task
+    // 1: accepted farming
+    // 2: finished farming, waiting to accept fountain
+
+    // 3: accepted fountain
+    // 4: finished fountain, waiting to accept harvest
+
+    // 5: accepted harvest
+    // 6: finished harvest
+
     private void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
@@ -66,18 +79,73 @@ public class Dante : MonoBehaviour
                 Ebutton.SetActive(false);
                 playerInRange = false;
 
-                if (playerController.state == 0)
+                audioSource.PlayOneShot(dante_sound, 0.3f);
+
+                if (character == "dante")
                 {
-                    // set dialog for dante farming task
-                    audioSource.PlayOneShot(dante_sound, 0.3f);
-                    dialogManager.SetTaskDialog("dante", "farming");
+                    if (playerController.state == 0)
+                    {
+                        dialogManager.SetTaskDialog("dante", "farming");
+                    }
+                    else if (playerController.state == 1)
+                    {
+                        dialogManager.SetTaskDialog("dante", "farming2");
+                    }
+                    else if (playerController.state == 2)
+                    {
+                        // waiting to accept fountain
+                    }
+                    else if (playerController.state == 3)
+                    {
+                        // dante fountain
+                    }
+                    else if (playerController.state == 4)
+                    {
+                        // waiting to accept harvest
+                    }
+                    else if (playerController.state == 5)
+                    {
+                        // dialog for harvest
+                    }
+                    else if (playerController.state == 6)
+                    {
+                        // dialog for harvest?
+                    }
                 }
-                else if(playerController.state == 1)
+
+                else if (character == "polina")
                 {
-                    audioSource.PlayOneShot(dante_sound, 0.3f);
-                    dialogManager.SetTaskDialog("dante", "farming2");
+                    if (playerController.state == 0)
+                    {
+                        dialogManager.SetTaskDialog("polina", "farming");
+                    }
+                    else if (playerController.state == 1)
+                    {
+                        dialogManager.SetTaskDialog("polina", "farming");
+                    }
+                    else if (playerController.state == 2)
+                    {
+                        dialogManager.SetTaskDialog("polina", "fountain");
+                    }
+                    else if(playerController.state == 3)
+                    {
+                        // fountain 2
+                    }
+                    else if(playerController.state == 4)
+                    {
+                        // waiting to accept harvest
+                    }
+                    else if (playerController.state == 5)
+                    {
+                        // dialog for harvest
+                    }
+                    else if (playerController.state == 6)
+                    {
+                        // dialog for harvest?
+                    }
+
                 }
-  
+
             }
         }
     }

@@ -12,7 +12,9 @@ public class IntroManager : MonoBehaviour
 
     public AudioClip glitch_short;
     public AudioClip glitch_long;
+    public AudioClip creepy_short;
     private AudioSource audioSource;
+    public AudioSource audioSource2;
 
     private bool hasStarted = false;
 
@@ -45,6 +47,8 @@ public class IntroManager : MonoBehaviour
         float volume = 0.5f; 
         panelButton.stop = true;
 
+        audioSource2.PlayOneShot(creepy_short, volume); // ost creepy box short
+
         glitch.SetActive(true);
         audioSource.PlayOneShot(glitch_short, volume);
         yield return new WaitForSeconds(1f);
@@ -63,7 +67,7 @@ public class IntroManager : MonoBehaviour
         glitch.SetActive(false);
         audioSource.PlayOneShot(glitch_long, volume);
         postprocessing.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
 
         // Start fade to black
         yield return StartCoroutine(FadeToBlack());

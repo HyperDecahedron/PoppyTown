@@ -31,13 +31,6 @@ public class PlayerController : MonoBehaviour
     [Header("Story variables")]
     public int state = 0;
 
-    // 0: didn't accept any task
-    // 1: accepted farming
-    // 2: finished farming
-
-    // 3: ...
-
-
     // quest items
     public bool has_watering_can = false;
     public bool has_seeds = false;

@@ -1,8 +1,11 @@
-Meter el lore de computer graphics
-Hacer interactable object animation + sonido
-add fog
-implement day / night
-Hacer sonidos y sound manager
+dante & polina tasks up to state 4
+polina: change sprite of the fountain when cleaning + sponge interactable
+poppy town interactables
+
+Acabar de hacer dialogos
+Implementar el moral meter segun los dialogos
+Implementar cambios dia/noche + tiempo + postprocessing
+Implementar cutscene final
 
 ----------- done pero no actualizado en github
 He hecho los visuals del diario y la logica con los diferentes tabs and with sounds
@@ -10,6 +13,8 @@ Interactable objects in mayor house
 finished intro scene with the glitches
 finished cutscene!
 sound design for interactable objects, intro glitches, sound for each character when dialog.
+Hacer interactable object animation + sonido
+añadir sonidos
 
 ----------- done
 Subir github
