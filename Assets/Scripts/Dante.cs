@@ -60,7 +60,7 @@ public class Dante : MonoBehaviour
 
     // STATES:
 
-    // 0: didn't accept any task
+    // 0: waiting to accept farming
     // 1: accepted farming
     // 2: finished farming, waiting to accept fountain
 
@@ -85,23 +85,28 @@ public class Dante : MonoBehaviour
                 {
                     if (playerController.state == 0)
                     {
+                        // suggest farming task
                         dialogManager.SetTaskDialog("dante", "farming");
                     }
                     else if (playerController.state == 1)
                     {
+                        // finish dialog for farming task
                         dialogManager.SetTaskDialog("dante", "farming2");
                     }
                     else if (playerController.state == 2)
                     {
                         // waiting to accept fountain
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 3)
                     {
                         // dante fountain
+                        dialogManager.SetTaskDialog("dante", "fountain");
                     }
                     else if (playerController.state == 4)
                     {
                         // waiting to accept harvest
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 5)
                     {
@@ -109,7 +114,8 @@ public class Dante : MonoBehaviour
                     }
                     else if (playerController.state == 6)
                     {
-                        // dialog for harvest?
+                        // finished all tasks
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                 }
 
@@ -117,23 +123,28 @@ public class Dante : MonoBehaviour
                 {
                     if (playerController.state == 0)
                     {
-                        dialogManager.SetTaskDialog("polina", "farming");
+                        // waiting to accept farming
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 1)
                     {
+                        // accepted farming task
                         dialogManager.SetTaskDialog("polina", "farming");
                     }
                     else if (playerController.state == 2)
                     {
+                        // finished farming task, suggest fountain task
                         dialogManager.SetTaskDialog("polina", "fountain");
                     }
                     else if(playerController.state == 3)
                     {
-                        // fountain 2
+                        // finish dialog for fountain task
+                        dialogManager.SetTaskDialog("polina", "fountain2");
                     }
                     else if(playerController.state == 4)
                     {
                         // waiting to accept harvest
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 5)
                     {
@@ -141,7 +152,8 @@ public class Dante : MonoBehaviour
                     }
                     else if (playerController.state == 6)
                     {
-                        // dialog for harvest?
+                        // finished all tasks
+                        dialogManager.SetTaskDialog("default_state", "default_state");
                     }
 
                 }

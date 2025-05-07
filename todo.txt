@@ -1,8 +1,5 @@
-dante & polina tasks up to state 4
-polina: change sprite of the fountain when cleaning + sponge interactable
-poppy town interactables
+task belzy
 
-Acabar de hacer dialogos
 Implementar el moral meter segun los dialogos
 Implementar cambios dia/noche + tiempo + postprocessing
 Implementar cutscene final
@@ -15,6 +12,9 @@ finished cutscene!
 sound design for interactable objects, intro glitches, sound for each character when dialog.
 Hacer interactable object animation + sonido
 añadir sonidos
+dante & polina tasks up to state 4
+polina: change sprite of the fountain when cleaning + sponge interactable
+poppy town interactables
 
 ----------- done
 Subir github

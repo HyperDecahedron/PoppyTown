@@ -50,6 +50,21 @@ public class DialogManager : MonoBehaviour
         "Oh, well maybe next time then...", // dante 2
     };
 
+    private string[] dante_fountain = new string[]
+    {
+     /*0*/   "Hey there! I heard you were fixing up the fountain for us!", 
+     /*1*/   "Yes, now it's all clean again!", 
+     /*2*/   "Actually, I'm here about something else.", 
+     /*3*/   "How kind of you to help out like that! Better let Polina know!", 
+     /*4*/   "Oh? What about?", 
+     /*5*/   "I'm looking for someone who is supposed to be here.",
+     /*6*/   "My sister Mary, I have reason to believe she's here in town.", 
+     /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
+     /*8*/   "Who is it? Maybe I can be of assistance?",
+     /*9*/   "Her name is Mary.",
+     /*10*/   "Her name is May.",
+    };
+
     // POLINA
     private string[] polina_farming = new string[]
     {
@@ -74,6 +89,29 @@ public class DialogManager : MonoBehaviour
      /*3*/   "Oh, thank you! Our fountain needs some cleaning up, more than I was able to do yesterday. Please grab a <b>sponge</b> and <b>clean away any grime on the fountains to the north</b>!", // 
      /*4*/   "Oh, well that's okay. I guess I can try to manage on my own...",  
    };
+
+    private string[] polina_fountain2 = new string[]
+   {
+     /*0*/   "Delilah! Is our fountain back to being sparkling clean?",  
+     /*1*/   "Yes it sure is!",
+     /*2*/   "No, not yet.", 
+     /*3*/   "Oh, are you sure? It seems you may have missed a spot or two...",  
+     /*4*/   "Oh how lovely! Thank you so much for helping me out with this! Now our town centerpiece is beautiful again!", 
+     /*5*/   "Oh... well maybe you just need to use the sponge then!", 
+   };
+
+    private string[] default_state = new string[]
+  {
+     /*0*/   "Hey there!?",  
+     /*1*/   "I'm looking for someone who is supposed to be here.",
+     /*2*/   "Do you know Mary?.", 
+     /*3*/   "Who is it? Maybe I can be of assistance?",  
+     /*4*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!", 
+     /*5*/   "Her name is Mary.",
+     /*6*/   "A young girl.", 
+     /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
+     /*8*/   "It rings a bell, but I can't remember.",
+  };
 
     private string[] template = new string[]
    {
@@ -167,6 +205,41 @@ public class DialogManager : MonoBehaviour
                     }
                 }));
             }
+
+            else if (task == "fountain")
+            {
+
+                SetDialog(dante_fountain[0], dante_fountain[1], dante_fountain[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(dante_fountain[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(dante_fountain[4], dante_fountain[5], dante_fountain[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            if (selected == 1)
+                            {
+                                SetDialog(dante_fountain[8], dante_fountain[9], dante_fountain[10]);
+
+                                StartCoroutine(WaitForOptionSelection((selected) =>
+                                {
+                                    SetDialog(dante_fountain[7]);
+                                }));
+                            }
+                            else if (selected == 2)
+                            {
+                                SetDialog(dante_fountain[7]);
+                            }
+                        }));
+                    }
+                }));
+            }
         }
 
         else if(character == "polina")
@@ -207,10 +280,81 @@ public class DialogManager : MonoBehaviour
 
             else if(task == "fountain")
             {
+                SetDialog(polina_fountain[0], polina_fountain[1], polina_fountain[2]);
 
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(polina_fountain[3], null, null, false); // bold
+                        // accepted task
+                        playerController.state = 3;
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(polina_fountain[4]);
+                    }
+                }));
+            }
+
+            else if(task == "fountain2")
+            {
+                SetDialog(polina_fountain2[0], polina_fountain2[1], polina_fountain2[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        if (playerController.has_cleaned1 && playerController.has_cleaned2 && playerController.has_cleaned3)
+                        {
+                            // all items
+                            SetDialog(polina_fountain2[4]);
+
+                            // STATE 2: player finished farming task
+                            playerController.state = 4;
+                        }
+                        else
+                        {
+                            // missing items
+                            SetDialog(polina_fountain2[3]);
+                        }
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(polina_fountain2[5]);
+                    }
+                }));
             }
         }
 
+        else if(character == "default_state")
+        {
+            SetDialog(default_state[0], default_state[1], default_state[2]);
+
+            StartCoroutine(WaitForOptionSelection((selected) =>
+            {
+                if (selected == 2)
+                {
+                    SetDialog(default_state[4]);
+                }
+                else if (selected == 1)
+                {
+                    SetDialog(default_state[3], default_state[5], default_state[6]);
+
+                    StartCoroutine(WaitForOptionSelection((selected) =>
+                    {
+                        if (selected == 1)
+                        {
+                            SetDialog(default_state[7]);
+                        }
+                        else if (selected == 2)
+                        {
+                            SetDialog(default_state[8]);
+                        }
+                    }));
+                }
+            }));
+        }
     }
 
 

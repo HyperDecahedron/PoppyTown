@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     // quest items
     public bool has_watering_can = false;
     public bool has_seeds = false;
+    public bool has_sponge = false;
+    public bool has_cleaned1 = false;
+    public bool has_cleaned2 = false;
+    public bool has_cleaned3 = false;
 
     private void Awake()
     {
