@@ -79,8 +79,13 @@ public class GameTimeManager : MonoBehaviour
             if (newSprite != null)
                 sunImage.sprite = newSprite;
 
-            // Update creepiness
-            if (hours == 3 && minutes == 00 && creepiness < 3)
+            // Update creepiness at 15 and at 20 in the same day
+            if (hours == 15 && minutes == 00 && creepiness < 3)
+            {
+                creepiness++; // update every night at 3
+                SetStage();
+            }
+            else if (hours == 20 && minutes == 00 && creepiness < 3)
             {
                 creepiness++; // update every night at 3
                 SetStage();

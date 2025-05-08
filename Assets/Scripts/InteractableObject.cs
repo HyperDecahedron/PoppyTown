@@ -51,6 +51,8 @@ public class InteractableObject : MonoBehaviour
                     this.transform.parent.gameObject.SetActive(false);
                 else if (name == "fountain3" && playerController.has_cleaned3)
                     this.transform.parent.gameObject.SetActive(false);
+                else if(name == "diary" && playerController.has_diary)
+                    this.transform.parent.gameObject.SetActive(false);
             }
             else
             {
@@ -85,8 +87,10 @@ public class InteractableObject : MonoBehaviour
             {
                 Ebutton.SetActive(false);
                 audioSource.PlayOneShot(button_sound, 0.8f);
-                dialogManager.SetDialog(text, null, null, !isQuestItem); // if it is quest item, set type to false
                 playerInRange = false;
+
+                if (name != "fountain1" && name != "fountain2" && name != "fountain3")
+                    dialogManager.SetDialog(text, null, null, !isQuestItem); // if it is quest item, set type to false
 
                 if (isQuestItem)
                 {
@@ -102,19 +106,39 @@ public class InteractableObject : MonoBehaviour
                         else if (name == "sponge")
                             playerController.has_sponge = true;
                         else if (name == "fountain1" && playerController.has_sponge)
+                        {
+                            dialogManager.SetDialog(text, null, null, !isQuestItem);
                             playerController.has_cleaned1 = true;
+                            this.transform.parent.gameObject.SetActive(false);
+                        }   
                         else if (name == "fountain2" && playerController.has_sponge)
+                        {
+                            dialogManager.SetDialog(text, null, null, !isQuestItem);
                             playerController.has_cleaned2 = true;
+                            this.transform.parent.gameObject.SetActive(false);
+                        }    
                         else if (name == "fountain3" && playerController.has_sponge)
+                        {
+                            dialogManager.SetDialog(text, null, null, !isQuestItem);
                             playerController.has_cleaned3 = true;
-
+                            this.transform.parent.gameObject.SetActive(false);
+                        }  
+                        else if(name == "poppy")
+                        {
+                            playerController.poppies++;
+                        }
+                        else if(name == "diary")
+                        {
+                            playerController.has_diary = true;
+                        }
                     }
                     else
                     {
                         Debug.Log("Character: PlayerController not found");
                     }
 
-                    this.transform.parent.gameObject.SetActive(false);
+                    if(name!= "fountain1" && name != "fountain2" && name != "fountain3")
+                        this.transform.parent.gameObject.SetActive(false);
                 }
             }
         }

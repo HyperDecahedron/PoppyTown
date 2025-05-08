@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     public bool has_cleaned1 = false;
     public bool has_cleaned2 = false;
     public bool has_cleaned3 = false;
+    public int poppies = 0;
+    public bool has_diary = false; 
 
     private void Awake()
     {

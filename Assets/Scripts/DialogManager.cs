@@ -30,7 +30,7 @@ public class DialogManager : MonoBehaviour
     private float typingSpeed = 0.03f;
 
     // Characters Dialog
-    // DANTE
+    // DANTE -------------------------------------------------------------------------------------
     private string[] dante_farming = new string[]
     {
         "Say, Delilah! Perhaps you could assist me? I've just finished tilling this soil, could you bring me some planting supplies?", // dante
@@ -46,7 +46,7 @@ public class DialogManager : MonoBehaviour
         "Yes, here they are.", // delilah 1
         "No, not yet.", // delilah 2
         "Oh dear, you're still missing something! Everything should be around the crops...", // dante 1 - missing items
-        "Thank you dear!", // dante 1 - all items
+        "Thank you, dear! I think Polina needs help too. Follow the path to the west, you'll find her in town", // dante 1 - all items
         "Oh, well maybe next time then...", // dante 2
     };
 
@@ -65,7 +65,22 @@ public class DialogManager : MonoBehaviour
      /*10*/   "Her name is May.",
     };
 
-    // POLINA
+    private string[] dante_harvest = new string[]
+    {
+         /*0*/   "Hey there Delilah! How is your harvesting task going?",  
+         /*1*/   "I've harvested all he needed!",
+         /*2*/   "Actually, I'm here about something else.", 
+         /*3*/   "Well then head on back, let's not keep him waiting!",  
+         /*4*/   "Oh? What about?", 
+         /*5*/   "I'm looking for someone who is supposed to be here.", 
+         /*6*/   "My sister Mary, I have reason to believe she's here in town.", 
+         /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
+         /*8*/   "Who is it? Maybe I can be of assistance?",
+         /*9*/   "Her name is Mary.",
+         /*10*/  "Her name is May",
+    };
+
+    // POLINA ----------------------------------------------------------------------------------------
     private string[] polina_farming = new string[]
     {
      /*0*/   "How is your search for the farming supplies going?", // polina
@@ -96,13 +111,14 @@ public class DialogManager : MonoBehaviour
      /*1*/   "Yes it sure is!",
      /*2*/   "No, not yet.", 
      /*3*/   "Oh, are you sure? It seems you may have missed a spot or two...",  
-     /*4*/   "Oh how lovely! Thank you so much for helping me out with this! Now our town centerpiece is beautiful again!", 
+     /*4*/   "Oh how lovely! Thank you so much! Now our town centerpiece is beautiful again! I believe Mayor Belzy might have another task for you! He’s inside the big house to the north, next to the market.", 
      /*5*/   "Oh... well maybe you just need to use the sponge then!", 
+     /*6*/   "I believe Mayor Belzy might have another task for you! He’s inside the big house to the north, next to the market.",
    };
 
     private string[] default_state = new string[]
   {
-     /*0*/   "Hey there!?",  
+     /*0*/   "Hey there!",  
      /*1*/   "I'm looking for someone who is supposed to be here.",
      /*2*/   "Do you know Mary?.", 
      /*3*/   "Who is it? Maybe I can be of assistance?",  
@@ -112,6 +128,92 @@ public class DialogManager : MonoBehaviour
      /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
      /*8*/   "It rings a bell, but I can't remember.",
   };
+
+    private string[] polina_harvest = new string[]
+    {
+     /*0*/   "I heard you were bringing Mayor Belzy some Poppies! How is the search going?", // polina
+     /*1*/   "I've harvested all he needed!", // delilah 1
+     /*2*/   "Actually, I wanted to ask about my sister...", // delilah 2
+     /*3*/   "Wonderful! Well don't keep Mayor Belzy waiting over me, head on over there!", // polina 1
+     /*4*/   "Oh? What about your sister?", // polina 2
+     /*5*/   "My sister sent me a letter from here, I'm trying to find her.", // delilah 3
+     /*6*/   "Mary, I have reason to believe she's here in town.", // delilah 4
+     /*7*/   "I don't know of any Mary here in Poppy Town, but I'm sure she's fine wherever she is!",
+     /*8*/   "Oh? Who is your sister? Maybe I know her and can be of assistance?",
+     /*9*/   "Her name is Mary.",
+     /*10*/   "Her name is May.",
+    };
+
+    // BELZY -----------------------------------------------------------------------------------------
+    private string[] default_belzy = new string[]
+   {
+      /*0*/   "Ah, Miss Delilah, what an absolute pleasure it is to make your acquaintance.",  
+     /*1*/   "Who are you?",
+     /*2*/   "I came to ask about someone I'm looking for.", 
+     /*3*/   "I am none other than Mayor Belzy himself, at your service, with utmost pleasure.",  
+     /*4*/   "Oh? Well do tell, who is this mystery person?", 
+     /*5*/   "Mary.", 
+     /*6*/   "My sister, Mary.", 
+     /*7*/   "Ah, Mary! Yes, I remember her! Cheerful girl, she really liked the Poppies!",
+     /*8*/   "Sorry, I'm busy now. Hahaha!",
+     /*9*/   "Where is she now?",
+     /*10*/  "What happened to her?",
+     /*11*/  "I'm sure she's around somewhere! Can't have disappeared into thin air, can she now? Oh forgive me, I jest.",
+     /*12*/  "Happened to her..? Why would anything have happened to her? Are you quite alright Delilah? I'm sure that Mary is fine wherever she is!",
+  };
+
+    private string[] belzy_farming = new string[]
+  {
+     /*0*/   "Ah, Delilah. I heard you were helping Dante out with the Poppies! How lovely!",  
+     /*1*/   "Yes, she asked me to help her clean it.",
+     /*2*/   "Yes, but I came to ask about someone I'm looking for.", 
+     /*3*/   "Delightful! How nice to see you helping out so quickly! I'm sure your contributions to our town will be of great value!",  
+     /*4*/   "Oh? Well do tell, who is this mystery person?", 
+     /*5*/   "Mary.", 
+     /*6*/   "My sister, Mary.", 
+     /*7*/   "Ah, Mary! Yes, I remember her! Cheerful girl, she really liked the Poppies! She would be delighted to see you helping Polina with the town fountain!",
+     /*8*/   "Sorry, I'm busy now. Hahaha!",
+     /*9*/   "Where is she now?",
+     /*10*/  "What happened to her?",
+     /*11*/  "I'm sure she's around somewhere! Can't have disappeared into thin air, can she now? Oh forgive me, I jest. Speaking of the town fountain, better run off and make sure it's sparkling!",
+     /*12*/  "Happened to her..? Why would anything have happened to her? Are you quite alright Delilah? I'm sure that Mary is fine wherever she is! Speaking of the town fountain, better run off and make sure it's sparkling!",
+  };
+
+    private string[] belzy_fountain = new string[]
+  {
+     /*0*/   "Ah, Delilah. I heard you were helping Polina out with some town maintenence! The fountain, if I remember correctly?",  
+     /*1*/   "Yes, he asked me to find a few items to help with planting more crops.",
+     /*2*/   "Yes, but I came to ask you something else. I am looking for someone.", 
+     /*3*/   "Wonderful! Well, best not to keep him waiting, off you run!",  
+     /*4*/   "Oh? Who are you looking for?", 
+     /*5*/   "Mary.", 
+     /*6*/   "My sister, Mary.", 
+     /*7*/   "Ah, Mary! Yes, I remember her! Cheerful girl, she really liked the Poppies! She would be delighted to see you helping Dante with the Poppy Fields!",
+     /*8*/   "Sorry, I'm busy now. Hahaha!",
+     /*9*/   "Where is she now?",
+     /*10*/  "What happened to her?",
+     /*11*/  "I'm sure she's around somewhere! Can't have disappeared into thin air, can she now? Oh forgive me, I jest. Speaking of the Poppy Fields, better run off and get those supplies to Dante!",
+     /*12*/  "Happened to her..? Why would anything have happened to her? Are you quite alright Delilah? I'm sure that Mary is fine wherever she is! Speaking of the Poppy Fields, better run off and get those supplies to Dante!",
+  };
+
+    private string[] belzy_harvest = new string[]
+    {
+     /*0*/   "Ah, Delilah! I was just wondering what you were up to! Say, would you be able to lend me a hand?",  
+     /*1*/   "Sure, what do you need?.",
+     /*2*/   "Sorry, not right now", 
+     /*3*/   "Wonderful! Well you see, I happen to be in need of some of our lovely Poppy flowers! <b>Harvest five fully grown Poppies</b> and bring them to me!",  
+     /*4*/   "How unfortunate... Well, perhaps you can assist me sometime later then.", 
+     };
+
+    private string[] belzy_harvest2 = new string[]
+    {
+     /*0*/   "Ah! Have you come to bring me my Poppies?",  
+     /*1*/   "Yes, here they are.",
+     /*2*/   "No, not yet.", 
+     /*3*/   "Oh my, but this is not what I asked for! It seems you still have some poppies to collect. Run along now!",  
+     /*4*/   "Wonderful! Thank you for your assistance! These will be very useful for what I have in store! Now then, I suggest you return home and take some rest.",
+     /*5*/   "Oh, how disappointing. Well, what are you waiting for? Bring me my Poppies!",
+     };
 
     private string[] template = new string[]
    {
@@ -127,7 +229,7 @@ public class DialogManager : MonoBehaviour
      /*9*/   "",
    };
 
-
+   
     void Start()
     {
         option1Text = option1.transform.GetChild(0).GetComponent<Text>();
@@ -170,6 +272,7 @@ public class DialogManager : MonoBehaviour
 
                         // STATE 1: player accepted farming task
                         playerController.state = 1;
+                        Debug.Log("player state = " + playerController.state);
                     }
                     else if (selected == 2)
                     {
@@ -177,6 +280,7 @@ public class DialogManager : MonoBehaviour
                     }
                 }));
             }
+            
             else if (task == "farming2")
             {
                 SetDialog(dante_farming2[0], dante_farming2[1], dante_farming2[2]);
@@ -192,6 +296,7 @@ public class DialogManager : MonoBehaviour
 
                             // STATE 2: player finished farming task
                             playerController.state = 2;
+                            Debug.Log("player state = " + playerController.state);
                         }
                         else
                         {
@@ -235,6 +340,40 @@ public class DialogManager : MonoBehaviour
                             else if (selected == 2)
                             {
                                 SetDialog(dante_fountain[7]);
+                            }
+                        }));
+                    }
+                }));
+            }
+
+            else if (task == "harvest")
+            {
+                SetDialog(dante_harvest[0], dante_harvest[1], dante_harvest[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(dante_harvest[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(dante_harvest[4], dante_harvest[5], dante_harvest[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            if (selected == 1)
+                            {
+                                SetDialog(dante_harvest[8], dante_harvest[9], dante_harvest[10]);
+
+                                StartCoroutine(WaitForOptionSelection((selected) =>
+                                {
+                                    SetDialog(dante_harvest[7]);
+                                }));
+                            }
+                            else if (selected == 2)
+                            {
+                                SetDialog(dante_harvest[7]);
                             }
                         }));
                     }
@@ -289,6 +428,7 @@ public class DialogManager : MonoBehaviour
                         SetDialog(polina_fountain[3], null, null, false); // bold
                         // accepted task
                         playerController.state = 3;
+                        Debug.Log("player state = " + playerController.state);
                     }
                     else if (selected == 2)
                     {
@@ -312,6 +452,7 @@ public class DialogManager : MonoBehaviour
 
                             // STATE 2: player finished farming task
                             playerController.state = 4;
+                            Debug.Log("player state = " + playerController.state);
                         }
                         else
                         {
@@ -322,6 +463,40 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         SetDialog(polina_fountain2[5]);
+                    }
+                }));
+            }
+
+            else if (task == "harvest")
+            {
+                SetDialog(polina_harvest[0], polina_harvest[1], polina_harvest[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(polina_harvest[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(polina_harvest[4], polina_harvest[5], polina_harvest[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            if (selected == 1)
+                            {
+                                SetDialog(polina_harvest[8], polina_harvest[9], polina_harvest[10]);
+
+                                StartCoroutine(WaitForOptionSelection((selected) =>
+                                {
+                                    SetDialog(polina_harvest[7]);
+                                }));
+                            }
+                            else if (selected == 2)
+                            {
+                                SetDialog(polina_harvest[7]);
+                            }
+                        }));
                     }
                 }));
             }
@@ -354,6 +529,165 @@ public class DialogManager : MonoBehaviour
                     }));
                 }
             }));
+        }
+
+        else if(character == "belzy")
+        {
+            if(task == "default_belzy")
+            {
+                SetDialog(default_belzy[0], default_belzy[1], default_belzy[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(default_belzy[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(default_belzy[4], default_belzy[5], default_belzy[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            // the selected option does not matter
+
+                            SetDialog(default_belzy[7], default_belzy[9], default_belzy[10]);
+
+                            StartCoroutine(WaitForOptionSelection((selected) =>
+                            {
+                                if (selected == 1)
+                                {
+                                    SetDialog(default_belzy[11]);
+                                }
+                                else if (selected == 2)
+                                {
+                                    SetDialog(default_belzy[12]);
+                                }
+                            }));
+                        }));
+                    }
+                }));
+            }
+            
+            else if(task == "farming")
+            {
+                SetDialog(belzy_farming[0], belzy_farming[1], belzy_farming[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(belzy_farming[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(belzy_farming[4], belzy_farming[5], belzy_farming[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            // the selected option does not matter
+
+                            SetDialog(belzy_farming[7], belzy_farming[9], belzy_farming[10]);
+
+                            StartCoroutine(WaitForOptionSelection((selected) =>
+                            {
+                                if (selected == 1)
+                                {
+                                    SetDialog(belzy_farming[11]);
+                                }
+                                else if (selected == 2)
+                                {
+                                    SetDialog(belzy_farming[12]);
+                                }
+                            }));
+                        }));
+                    }
+                }));
+            }
+
+            else if (task == "fountain")
+            {
+                SetDialog(belzy_fountain[0], belzy_fountain[1], belzy_fountain[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(belzy_fountain[3]);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(belzy_fountain[4], belzy_fountain[5], belzy_fountain[6]);
+
+                        StartCoroutine(WaitForOptionSelection((selected) =>
+                        {
+                            // the selected option does not matter
+
+                            SetDialog(belzy_fountain[7], belzy_fountain[9], belzy_fountain[10]);
+
+                            StartCoroutine(WaitForOptionSelection((selected) =>
+                            {
+                                if (selected == 1)
+                                {
+                                    SetDialog(belzy_fountain[11]);
+                                }
+                                else if (selected == 2)
+                                {
+                                    SetDialog(belzy_fountain[12]);
+                                }
+                            }));
+                        }));
+                    }
+                }));
+            }
+
+            else if (task == "harvest")
+            {
+                SetDialog(belzy_harvest[0], belzy_harvest[1], belzy_harvest[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        SetDialog(belzy_harvest[3], null, null, false);
+
+                        playerController.state = 5;
+                        Debug.Log("player state = " + playerController.state);
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(belzy_harvest[4]);
+                    }
+                }));
+            }
+
+            else if (task == "harvest2")
+            {
+                SetDialog(belzy_harvest2[0], belzy_harvest2[1], belzy_harvest2[2]);
+
+                StartCoroutine(WaitForOptionSelection((selected) =>
+                {
+                    if (selected == 1)
+                    {
+                        if (playerController.poppies >= 5)
+                        {
+                            // all items
+                            SetDialog(belzy_harvest2[4]);
+                            playerController.state = 6;
+                            Debug.Log("player state = " + playerController.state);
+                        }
+                        else
+                        {
+                            // missing items
+                            SetDialog(belzy_harvest2[3]);
+                        }
+                    }
+                    else if (selected == 2)
+                    {
+                        SetDialog(belzy_harvest2[5]);
+                    }
+                }));
+            }
         }
     }
 

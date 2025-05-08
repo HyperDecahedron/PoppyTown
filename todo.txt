@@ -1,8 +1,6 @@
-task belzy
-
 Implementar el moral meter segun los dialogos
-Implementar cambios dia/noche + tiempo + postprocessing
-Implementar cutscene final
+Implementar cambios dia/noche
+Implementar cutscene final belzy + diary mary (pq si lo encuentra dice que lo lee al final)
 
 ----------- done pero no actualizado en github
 He hecho los visuals del diario y la logica con los diferentes tabs and with sounds
@@ -15,7 +13,9 @@ añadir sonidos
 dante & polina tasks up to state 4
 polina: change sprite of the fountain when cleaning + sponge interactable
 poppy town interactables
-
+Implementar cambios tiempo + postprocessing
+task belzy
+add candles, diary, newspapers and shovel
 ----------- done
 Subir github
 Acabar escenas

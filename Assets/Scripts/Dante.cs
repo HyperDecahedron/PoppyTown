@@ -85,32 +85,33 @@ public class Dante : MonoBehaviour
                 {
                     if (playerController.state == 0)
                     {
-                        // suggest farming task
+                        // waiting to accept farming
                         dialogManager.SetTaskDialog("dante", "farming");
                     }
                     else if (playerController.state == 1)
                     {
-                        // finish dialog for farming task
+                        // accepted farming task
                         dialogManager.SetTaskDialog("dante", "farming2");
                     }
                     else if (playerController.state == 2)
                     {
-                        // waiting to accept fountain
+                        // finished farming task, waiting to accept fountain task
                         dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 3)
                     {
-                        // dante fountain
+                        // accepted fountain task
                         dialogManager.SetTaskDialog("dante", "fountain");
                     }
                     else if (playerController.state == 4)
                     {
-                        // waiting to accept harvest
+                        // finished fountain task, waiting to accept harvest
                         dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 5)
                     {
-                        // dialog for harvest
+                        // accepted harvest task
+                        dialogManager.SetTaskDialog("dante", "harvest");
                     }
                     else if (playerController.state == 6)
                     {
@@ -133,27 +134,68 @@ public class Dante : MonoBehaviour
                     }
                     else if (playerController.state == 2)
                     {
-                        // finished farming task, suggest fountain task
+                        // finished farming task, waiting to accept fountain task
                         dialogManager.SetTaskDialog("polina", "fountain");
                     }
                     else if(playerController.state == 3)
                     {
-                        // finish dialog for fountain task
+                        // accepted fountain task
                         dialogManager.SetTaskDialog("polina", "fountain2");
                     }
                     else if(playerController.state == 4)
                     {
-                        // waiting to accept harvest
+                        // finished fountain task, waiting to accept harvest
                         dialogManager.SetTaskDialog("default_state", "default_state");
                     }
                     else if (playerController.state == 5)
                     {
-                        // dialog for harvest
+                        // accepted harvest task
+                        dialogManager.SetTaskDialog("polina", "harvest");
                     }
                     else if (playerController.state == 6)
                     {
                         // finished all tasks
                         dialogManager.SetTaskDialog("default_state", "default_state");
+                    }
+
+                }
+
+                else if (character == "belzy")
+                {
+                    if (playerController.state == 0)
+                    {
+                        // waiting to accept farming
+                        dialogManager.SetTaskDialog("belzy", "default_belzy");
+                    }
+                    else if (playerController.state == 1)
+                    {
+                        // accepted farming task
+                        dialogManager.SetTaskDialog("belzy", "farming");
+                    }
+                    else if (playerController.state == 2)
+                    {
+                        // finished farming task, waiting to accept fountain task
+                        dialogManager.SetTaskDialog("belzy", "default_belzy");
+                    }
+                    else if (playerController.state == 3)
+                    {
+                        // accepted fountain task
+                        dialogManager.SetTaskDialog("belzy", "fountain");
+                    }
+                    else if (playerController.state == 4)
+                    {
+                        // finished fountain task, waiting to accept harvest
+                        dialogManager.SetTaskDialog("belzy", "harvest");
+                    }
+                    else if (playerController.state == 5)
+                    {
+                        // accepted harvest task
+                        dialogManager.SetTaskDialog("belzy", "harvest2");
+                    }
+                    else if (playerController.state == 6)
+                    {
+                        // finished all tasks
+                        dialogManager.SetTaskDialog("belzy", "default_belzy");
                     }
 
                 }
