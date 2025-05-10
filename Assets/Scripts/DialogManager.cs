@@ -13,6 +13,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject option1;
     [SerializeField] private GameObject option2;
 
+    [SerializeField] private Moral_Meter moralMeter;
+
     private Text option1Text;
     private Text option2Text;
 
@@ -273,10 +275,13 @@ public class DialogManager : MonoBehaviour
                         // STATE 1: player accepted farming task
                         playerController.state = 1;
                         Debug.Log("player state = " + playerController.state);
+
+                        moralMeter.UpdateReputation(10);
                     }
                     else if (selected == 2)
                     {
                         SetDialog(dante_farming[4]);
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
@@ -297,16 +302,20 @@ public class DialogManager : MonoBehaviour
                             // STATE 2: player finished farming task
                             playerController.state = 2;
                             Debug.Log("player state = " + playerController.state);
+
+                            moralMeter.UpdateReputation(10);
                         }
                         else
                         {
                             // missing items
                             SetDialog(dante_farming2[3]);
+                            moralMeter.UpdateReputation(-5);
                         }
                     }
                     else if (selected == 2)
                     {
                         SetDialog(dante_farming2[5]);
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
@@ -321,9 +330,11 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(dante_fountain[3]);
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
                         SetDialog(dante_fountain[4], dante_fountain[5], dante_fountain[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -355,9 +366,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(dante_harvest[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(dante_harvest[4], dante_harvest[5], dante_harvest[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -392,9 +407,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(polina_farming[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(polina_farming[4], polina_farming[5], polina_farming[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -429,10 +448,14 @@ public class DialogManager : MonoBehaviour
                         // accepted task
                         playerController.state = 3;
                         Debug.Log("player state = " + playerController.state);
+
+                        moralMeter.UpdateReputation(10);
                     }
                     else if (selected == 2)
                     {
                         SetDialog(polina_fountain[4]);
+
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
@@ -453,16 +476,22 @@ public class DialogManager : MonoBehaviour
                             // STATE 2: player finished farming task
                             playerController.state = 4;
                             Debug.Log("player state = " + playerController.state);
+
+                            moralMeter.UpdateReputation(10);
                         }
                         else
                         {
                             // missing items
                             SetDialog(polina_fountain2[3]);
+
+                            moralMeter.UpdateReputation(-5);
                         }
                     }
                     else if (selected == 2)
                     {
                         SetDialog(polina_fountain2[5]);
+
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
@@ -476,9 +505,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(polina_harvest[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(polina_harvest[4], polina_harvest[5], polina_harvest[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -542,9 +575,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(default_belzy[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(default_belzy[4], default_belzy[5], default_belzy[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -578,9 +615,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(belzy_farming[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(belzy_farming[4], belzy_farming[5], belzy_farming[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -614,9 +655,13 @@ public class DialogManager : MonoBehaviour
                     if (selected == 1)
                     {
                         SetDialog(belzy_fountain[3]);
+
+                        moralMeter.UpdateReputation(5);
                     }
                     else if (selected == 2)
                     {
+                        moralMeter.UpdateReputation(-5);
+
                         SetDialog(belzy_fountain[4], belzy_fountain[5], belzy_fountain[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -653,10 +698,14 @@ public class DialogManager : MonoBehaviour
 
                         playerController.state = 5;
                         Debug.Log("player state = " + playerController.state);
+
+                        moralMeter.UpdateReputation(10);
                     }
                     else if (selected == 2)
                     {
                         SetDialog(belzy_harvest[4]);
+
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
@@ -675,16 +724,22 @@ public class DialogManager : MonoBehaviour
                             SetDialog(belzy_harvest2[4]);
                             playerController.state = 6;
                             Debug.Log("player state = " + playerController.state);
+
+                            moralMeter.UpdateReputation(10);
                         }
                         else
                         {
                             // missing items
                             SetDialog(belzy_harvest2[3]);
+
+                            moralMeter.UpdateReputation(-5);
                         }
                     }
                     else if (selected == 2)
                     {
                         SetDialog(belzy_harvest2[5]);
+
+                        moralMeter.UpdateReputation(-5);
                     }
                 }));
             }
