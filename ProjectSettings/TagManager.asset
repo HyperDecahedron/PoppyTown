@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Dialog
   - CutSceneManager
+  - SceneManager
+  - FxTemporaire
+  - PostProcessing
   layers:
   - Default
   - TransparentFX

@@ -15,12 +15,15 @@ public class IntroManager : MonoBehaviour
     public AudioClip creepy_short;
     private AudioSource audioSource;
     public AudioSource audioSource2;
+    public AudioSource audioSourceOST;
 
     private bool hasStarted = false;
 
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
+        audioSourceOST.time = 3f;
+        audioSourceOST.Play();
 
         postprocessing.SetActive(false);
         glitch.SetActive(false);
@@ -44,7 +47,9 @@ public class IntroManager : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
-        float volume = 0.5f; 
+        audioSourceOST.Stop();
+
+        float volume = 0.3f; 
         panelButton.stop = true;
 
         audioSource2.PlayOneShot(creepy_short, volume); // ost creepy box short

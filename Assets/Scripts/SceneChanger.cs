@@ -34,6 +34,8 @@ public class SceneChanger : MonoBehaviour
         // Find the black image inside this object
         fadeImage = GetComponentInChildren<Image>();
 
+        string this_scene = SceneManager.GetActiveScene().name;
+
         if (fadeImage != null)
         {
             // Start fully black
@@ -81,10 +83,20 @@ public class SceneChanger : MonoBehaviour
                     break;
 
                 case "ForestScene":
-                    if (prev_forest != null)
-                        player.transform.position = prev_forest.position;
-                    else
-                        Debug.LogWarning("prev_forest is null!");
+                    if (this_scene != "FinalScene")
+                    {
+                        if (prev_forest != null)
+                            player.transform.position = prev_forest.position;
+                        else
+                            Debug.LogWarning("prev_forest is null!");
+                    }
+                    else // transport player out of sight for the final scene
+                    {
+                        if (prev_town != null)
+                            player.transform.position = prev_town.position;
+                        else
+                            Debug.LogWarning("prev_town is null!");
+                    }
                     break;
 
                 case "MCHouseScene":
@@ -106,17 +118,18 @@ public class SceneChanger : MonoBehaviour
             }
 
             // put the player as the follow object of the cinemachine camera of this scene (set in the variable above)
-            if (thisSceneCinemachine != null)
+            if(this_scene != "FinalScene")
             {
-                thisSceneCinemachine.Follow = player.transform;
-                Debug.Log("Cinemachine follow set");
+                if (thisSceneCinemachine != null)
+                {
+                    thisSceneCinemachine.Follow = player.transform;
+                    Debug.Log("Cinemachine follow set");
+                }
+                else
+                    Debug.Log("Cinemachine Camera not assigned in SceneChanger!");
             }
-            else
-                Debug.Log("Cinemachine Camera not assigned in SceneChanger!");
-
+           
             // Update sound of the steps if inside interior
-            string this_scene = SceneManager.GetActiveScene().name;
-
             if (this_scene == "MCHouseScene" || this_scene == "MayorHouseScene")
             {
                 playerController.isInterior = true;
@@ -125,6 +138,24 @@ public class SceneChanger : MonoBehaviour
             {
                 playerController.isInterior = false;
             }
+
+            // Set postprocessing to creepy
+            if (this_scene == "FinalScene")
+            {
+                GameObject postProcessing = GameObject.FindGameObjectWithTag("PostProcessing");
+                if (postProcessing != null && postProcessing.transform.childCount >= 3)
+                {
+                    postProcessing.transform.GetChild(0).gameObject.SetActive(false);
+                    postProcessing.transform.GetChild(1).gameObject.SetActive(false);
+                    postProcessing.transform.GetChild(2).gameObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogError("PostProcessing object not found or doesn't have enough children.");
+                }
+            }
+
+
         }
     }
 

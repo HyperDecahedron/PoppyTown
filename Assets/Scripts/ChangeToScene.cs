@@ -20,14 +20,28 @@ public class ChangeToScene : MonoBehaviour
             {
                 playerController.prevScene = currentScene;
                 Debug.Log("Updated prevScene to: " + currentScene);
+
+                if (sceneChanger != null)
+                {
+                    if(changeToScene == "MCHouseScene" && playerController.state >= 6)
+                    {
+                        sceneChanger.triggerCollision("FinalScene");
+                    }
+                    else
+                    {
+                        sceneChanger.triggerCollision(changeToScene);
+                    }        
+                }
+                else
+                    Debug.Log("SceneChanger reference is missing!");
             }
             else
                 Debug.Log("PlayerController component not found on the Player!");
 
-            if (sceneChanger != null)
+            /*if (sceneChanger != null)
                 sceneChanger.triggerCollision(changeToScene);
             else
-                Debug.Log("SceneChanger reference is missing!");
+                Debug.Log("SceneChanger reference is missing!");*/
         }
     }
 

@@ -1,12 +1,33 @@
+GAME: MAXIMAZED AND FREE ASPECT
+
+añadir texto bien puesto de la final scene y diario de mary
+----
+try build again
+
+Añadir animacion dante
+
+Añadir imagenes dialogos
+
 Implementar mapa dia/noche
 
+----------- done pero no actualizado en github
+Probar build y solucionar bugs
+Añadir canción al inicio de la pantalla de intro
+sound for water 
+implementar transición de la cancion a wind forest y nada mas cuando el state del player es 5
+
+add wind when player is in state 5 or above
+
 Implementar cutscene final belzy + diary mary (pq si lo encuentra dice que lo lee al final)
-	- Se ve a belzy haciendo algo en los poppy fields y delilah lo ve. 
-	- belzy ya no está en su casa 
+Salta a la final scene si: player llega al estado 6 y va a su casa o si son las 22
+
+	- Se ve a belzy haciendo algo en los poppy fields y delilah lo ve.  
 	- ¿que estaba haciendo belzy en los crosp y por qué tenia ese aspecto?
 	- si ha conseguido el diario, lo lee
 	- ¿qué significa esto?
 	- ¿donde está mary?
+	- si ha hablado de algo de mary: por qué los villagers dicen que mary esta bien?
+	-  si ha encontrado el diario, será mary una de las desaparecidas?
 	- Summary de la demo:
 		- 3 tasks hechas?
 		- diario conseguido?
@@ -14,8 +35,6 @@ Implementar cutscene final belzy + diary mary (pq si lo encuentra dice que lo le
 		- hablado con belzy sobre mary?
 		- hablado con polina o dante sobre mary?
 		- Y DAR NOTA FINAL SEGÚN TODO LO QUE HAYAN HECHO? grade ABCDE
-
------------ done pero no actualizado en github
 
 ----------- done
 Subir github

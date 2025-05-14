@@ -300,6 +300,7 @@ public class DialogManager : MonoBehaviour
                             SetDialog(dante_farming2[4]);
 
                             // STATE 2: player finished farming task
+                            playerController.tasks++;
                             playerController.state = 2;
                             Debug.Log("player state = " + playerController.state);
 
@@ -335,6 +336,8 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked = true;
+
                         SetDialog(dante_fountain[4], dante_fountain[5], dante_fountain[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
@@ -372,6 +375,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked = true;
 
                         SetDialog(dante_harvest[4], dante_harvest[5], dante_harvest[6]);
 
@@ -413,6 +417,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked = true;
 
                         SetDialog(polina_farming[4], polina_farming[5], polina_farming[6]);
 
@@ -474,6 +479,7 @@ public class DialogManager : MonoBehaviour
                             SetDialog(polina_fountain2[4]);
 
                             // STATE 2: player finished farming task
+                            playerController.tasks++;
                             playerController.state = 4;
                             Debug.Log("player state = " + playerController.state);
 
@@ -511,6 +517,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked = true;
 
                         SetDialog(polina_harvest[4], polina_harvest[5], polina_harvest[6]);
 
@@ -538,6 +545,7 @@ public class DialogManager : MonoBehaviour
         else if(character == "default_state")
         {
             SetDialog(default_state[0], default_state[1], default_state[2]);
+            playerController.has_talked = true;
 
             StartCoroutine(WaitForOptionSelection((selected) =>
             {
@@ -581,6 +589,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked_belzy = true;
 
                         SetDialog(default_belzy[4], default_belzy[5], default_belzy[6]);
 
@@ -621,6 +630,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked_belzy = true;
 
                         SetDialog(belzy_farming[4], belzy_farming[5], belzy_farming[6]);
 
@@ -661,6 +671,7 @@ public class DialogManager : MonoBehaviour
                     else if (selected == 2)
                     {
                         moralMeter.UpdateReputation(-5);
+                        playerController.has_talked_belzy = true;
 
                         SetDialog(belzy_fountain[4], belzy_fountain[5], belzy_fountain[6]);
 
@@ -721,6 +732,7 @@ public class DialogManager : MonoBehaviour
                         if (playerController.poppies >= 5)
                         {
                             // all items
+                            playerController.tasks++;
                             SetDialog(belzy_harvest2[4]);
                             playerController.state = 6;
                             Debug.Log("player state = " + playerController.state);

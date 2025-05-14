@@ -34,6 +34,8 @@ public class GameTimeManager : MonoBehaviour
     private float lastDisplayedMinutes;
     private float gameMinutesPerRealSecond;
 
+    private PlayerController playerController;
+
     void Start()
     {
         // Initialize time
@@ -44,6 +46,17 @@ public class GameTimeManager : MonoBehaviour
 
         // set initial stage volumes
         SetStage();
+
+        // Find the GameObject with the "Player" tag and get its PlayerController
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerController = player.GetComponent<PlayerController>();
+        }
+        else
+        {
+            Debug.LogError("Player GameObject with tag 'Player' not found!");
+        }
     }
 
     void FixedUpdate() // Better for consistent time updates
@@ -88,8 +101,32 @@ public class GameTimeManager : MonoBehaviour
             else if (hours == 20 && minutes == 00 && creepiness < 3)
             {
                 creepiness++; // update every night at 3
+                playerController.startCreepy = true;
                 SetStage();
             }
+            else if (hours == 22 && minutes == 0)
+            {
+                GameObject sceneManagerObj = GameObject.FindGameObjectWithTag("SceneManager");
+                if (sceneManagerObj != null)
+                {
+                    SceneChanger sceneChanger = sceneManagerObj.GetComponent<SceneChanger>();
+                    if (sceneChanger != null)
+                    {
+                        sceneChanger.triggerCollision("FinalScene");
+                    }
+                    else
+                    {
+                        Debug.LogError("SceneChanger component not found on SceneManager object.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("SceneManager object not found with tag 'SceneManager'.");
+                }
+
+                gameObject.SetActive(false); // Deactivate this GameObject
+            }
+
 
 
         }

@@ -39,7 +39,14 @@ public class PlayerController : MonoBehaviour
     public bool has_cleaned2 = false;
     public bool has_cleaned3 = false;
     public int poppies = 0;
-    public bool has_diary = false; 
+    public bool has_diary = false;
+    public bool has_newspaper = false;
+    public bool has_talked = false;
+    public bool has_talked_belzy = false;
+    public int tasks = 0;
+
+    // creepyfying
+    public bool startCreepy = false;
 
     private void Awake()
     {

@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/ScenesBika1/PoppyTown.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/ScenesNatalia/TrainStationScene.unity
-    guid: 1fc05f8c359dd3042be70adbf17a17c8
+    path: Assets/ScenesNatalia/IntroScene.unity
+    guid: dd60e74a7cf35794dbda6e1b0b3145f6
+  - enabled: 1
+    path: Assets/ScenesNatalia/CutScene.unity
+    guid: fd9bbc6fae1546245b6e6bfe78664a1b
+  - enabled: 1
+    path: Assets/ScenesNatalia/MCHouseScene.unity
+    guid: f1c4b0e044fdf1d4db7af2cd91a3cc7e
+  - enabled: 1
+    path: Assets/ScenesNatalia/ForestScene.unity
+    guid: 390cd37fdd47e544cace45b832b06ed9
   - enabled: 1
     path: Assets/ScenesNatalia/PoppyTownScene.unity
     guid: 88998b5f6aa7fd74f85d40d4e8ec9f2e
@@ -18,18 +24,15 @@ EditorBuildSettings:
     path: Assets/ScenesNatalia/MayorHouseScene.unity
     guid: e923a02f64ea7b649be9ac963c077536
   - enabled: 1
-    path: Assets/ScenesNatalia/ForestScene.unity
-    guid: 390cd37fdd47e544cace45b832b06ed9
-  - enabled: 1
+    path: Assets/ScenesNatalia/FinalScene.unity
+    guid: f89539a9899236a4c9f2eb0c842148ec
+  - enabled: 0
     path: Assets/ScenesNatalia/CropsScene.unity
     guid: 55f70f0580c0f8e45a6401ad819dbc17
-  - enabled: 1
-    path: Assets/ScenesNatalia/MCHouseScene.unity
-    guid: f1c4b0e044fdf1d4db7af2cd91a3cc7e
-  - enabled: 1
-    path: Assets/ScenesNatalia/IntroScene.unity
-    guid: dd60e74a7cf35794dbda6e1b0b3145f6
-  - enabled: 1
-    path: Assets/ScenesNatalia/CutScene.unity
-    guid: fd9bbc6fae1546245b6e6bfe78664a1b
+  - enabled: 0
+    path: Assets/ScenesNatalia/TrainStationScene.unity
+    guid: 1fc05f8c359dd3042be70adbf17a17c8
+  - enabled: 0
+    path: Assets/ScenesBika1/PoppyTown.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

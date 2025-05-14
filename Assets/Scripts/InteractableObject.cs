@@ -53,6 +53,8 @@ public class InteractableObject : MonoBehaviour
                     this.transform.parent.gameObject.SetActive(false);
                 else if(name == "diary" && playerController.has_diary)
                     this.transform.parent.gameObject.SetActive(false);
+                else if (name == "newspaper" && playerController.has_newspaper)
+                    this.transform.parent.gameObject.SetActive(false);
             }
             else
             {
@@ -130,6 +132,10 @@ public class InteractableObject : MonoBehaviour
                         else if(name == "diary")
                         {
                             playerController.has_diary = true;
+                        }
+                        else if (name == "newspaper")
+                        {
+                            playerController.has_newspaper = true;
                         }
                     }
                     else
