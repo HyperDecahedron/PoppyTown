@@ -3632,7 +3632,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.873033, y: -0.59809995, z: -10}
+  m_LocalPosition: {x: -7.673918, y: 0.025870085, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5633,7 +5633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHour: 8
-  realMinutesPerGameDay: 8
+  realMinutesPerGameDay: 10
   displayUpdateInterval: 15
   timeDisplay: {fileID: 5021712650452953858}
   creepiness: 1
@@ -9953,6 +9953,10 @@ MonoBehaviour:
   has_cleaned3: 0
   poppies: 0
   has_diary: 0
+  has_newspaper: 0
+  has_talked: 0
+  has_talked_belzy: 0
+  tasks: 0
   startCreepy: 0
 --- !u!212 &5266396926720630245
 SpriteRenderer:

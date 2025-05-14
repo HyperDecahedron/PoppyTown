@@ -1,8 +1,13 @@
 GAME: MAXIMAZED AND FREE ASPECT
 
-añadir texto bien puesto de la final scene y diario de mary
-----
 try build again
+quitar que puedan pulsar la e en la cutscene
+aumentar tiempo del juego a 12 min
+quitar poppy script de los poppies del final scene
+ajustar text box del newspaper y villagers
+desactivar objeto tiempo en el final scene
+no se ve el diario en final scene
+----
 
 Añadir animacion dante
 

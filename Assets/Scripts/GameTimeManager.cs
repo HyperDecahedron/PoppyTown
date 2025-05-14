@@ -104,7 +104,7 @@ public class GameTimeManager : MonoBehaviour
                 playerController.startCreepy = true;
                 SetStage();
             }
-            else if (hours == 22 && minutes == 0)
+            else if (hours == 23 && minutes == 0)
             {
                 GameObject sceneManagerObj = GameObject.FindGameObjectWithTag("SceneManager");
                 if (sceneManagerObj != null)

@@ -64266,7 +64266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355, y: -427}
+  m_AnchoredPosition: {x: 322, y: -427}
   m_SizeDelta: {x: 915.048, y: 286.3687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491818514
@@ -170206,10 +170206,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.6
-  m_Text: '15/30
-
-
-'
+  m_Text: "Mary's diary - 15/30\n\nMayor Belzy asked me to help with the poppies
+    again. \nThey say I\u2019m doing well. They say I belong. \n\nI think the poppies
+    are inside Dante's greenhouse now. \n\nThat\u2019s good. \nThat\u2019s right.
+    Yes!"
 --- !u!114 &8129819060304808695
 MonoBehaviour:
   m_ObjectHideFlags: 0

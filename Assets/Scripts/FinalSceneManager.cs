@@ -32,17 +32,17 @@ public class FinalSceneManager : MonoBehaviour
     };
 
     private string[] diaryLines = {
-        "DIARY LINE 1",
-        "DIARY OPENS",
-        "DIARY LINE 2"
+        "Luckily, I found Mary's diary today. Let's see...",
+        "",
+        "Inside Dante's greenhouse?\nI should go tomorrow and see if I can find any clues."
     };
 
     private string[] newspaperLine = {
-        "NEWSPAPER LINES"
+        "I found the newspaper.\nIs Mary one of those missing villagers?"
     };
 
     private string[] villagerLine = {
-        "VILLAGERS LINE"
+        "The villagers act like they don't know anything about Mary.\nOr they say she's fine... but where is she?"
     };
 
     private string[] finalLine = {
@@ -103,6 +103,18 @@ public class FinalSceneManager : MonoBehaviour
                 EObject.SetActive(false);
                 audioSource.PlayOneShot(button_sound, 0.6f);
                 currentLine++;
+
+                if(currentState == CutsceneState.DiaryLines)
+                {
+                    if (currentLine == 0)
+                    {
+                        StartCoroutine(ResizeLetterPanel());
+                    }
+                    else if (currentLine == 1)
+                    {
+                        panelLetter.SetActive(false);
+                    }
+                }
 
                 if (currentLine < activeLines.Length)
                 {
@@ -360,5 +372,29 @@ public class FinalSceneManager : MonoBehaviour
 
         scoreText.text = "SCORE: " + letter_score;
         audioSource.PlayOneShot(scoreAudio, 0.5f);
+    }
+
+    IEnumerator ResizeLetterPanel()
+    {
+        panelLetter.SetActive(true);
+
+        // Set initial scale to Y = 0
+        Vector3 initialScale = new Vector3(panelLetter.transform.localScale.x, 0f, panelLetter.transform.localScale.z);
+        // Target scale is Y = 1
+        Vector3 targetScale = new Vector3(panelLetter.transform.localScale.x, 1f, panelLetter.transform.localScale.z);
+
+        // Resize panelLetter from Y = 0 to Y = 1 in 0.5s
+        float timeElapsed = 0f;
+        while (timeElapsed < 0.5f)
+        {
+            timeElapsed += Time.deltaTime;
+            panelLetter.transform.localScale = Vector3.Lerp(initialScale, targetScale, timeElapsed / 0.5f);
+            yield return null;
+        }
+
+        panelLetter.transform.localScale = targetScale;
+
+        // Re-enable the E button to continue
+        EObject.SetActive(true);
     }
 }
