@@ -36,6 +36,8 @@ public class GameTimeManager : MonoBehaviour
 
     private PlayerController playerController;
 
+    public bool stopTime = false;
+
     void Start()
     {
         // Initialize time
@@ -66,6 +68,7 @@ public class GameTimeManager : MonoBehaviour
 
         // Check if we should update the display (only every X in-game minutes)
         float currentRoundedMinutes = Mathf.Floor(gameTimeInMinutes / displayUpdateInterval) * displayUpdateInterval;
+        
         if (currentRoundedMinutes != lastDisplayedMinutes)
         {
             lastDisplayedMinutes = currentRoundedMinutes;
@@ -75,7 +78,7 @@ public class GameTimeManager : MonoBehaviour
 
     void UpdateTimeDisplay()
     {
-        if (timeDisplay != null)
+        if (timeDisplay != null && !stopTime)
         {
             // Calculate current hour and minute (rounded to nearest display interval)
             int totalMinutes = (int)lastDisplayedMinutes;
@@ -112,6 +115,7 @@ public class GameTimeManager : MonoBehaviour
                     SceneChanger sceneChanger = sceneManagerObj.GetComponent<SceneChanger>();
                     if (sceneChanger != null)
                     {
+                        stopTime = true;
                         sceneChanger.triggerCollision("FinalScene");
                     }
                     else
@@ -124,7 +128,7 @@ public class GameTimeManager : MonoBehaviour
                     Debug.LogError("SceneManager object not found with tag 'SceneManager'.");
                 }
 
-                gameObject.SetActive(false); // Deactivate this GameObject
+                this.gameObject.SetActive(false); // Deactivate this GameObject
             }
 
 

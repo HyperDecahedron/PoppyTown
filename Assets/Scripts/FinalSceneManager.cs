@@ -28,21 +28,21 @@ public class FinalSceneManager : MonoBehaviour
 
     private string[] lines2 = {
         "Wh-what is that light coming out of Mayor Belzy?",
-        "I must be dreaming... I should go to sleep now.",
+        "I must be dreaming... I should go to\nsleep now.",
     };
 
     private string[] diaryLines = {
-        "Luckily, I found Mary's diary today. Let's see...",
-        "",
-        "Inside Dante's greenhouse?\nI should go tomorrow and see if I can find any clues."
+        "Luckily, I found Mary's diary today.\nLet's see...",
+        "  ",
+        "Inside Dante's greenhouse?\nI should go tomorrow and see if I can\nfind any clues."
     };
 
     private string[] newspaperLine = {
-        "I found the newspaper.\nIs Mary one of those missing villagers?"
+        "I found the newspaper.\nIs Mary one of those\nmissing villagers?"
     };
 
     private string[] villagerLine = {
-        "The villagers act like they don't know anything about Mary.\nOr they say she's fine... but where is she?"
+        "The villagers act like they don't know anything\nabout Mary.Or they say she's fine...\nBut where is she?"
     };
 
     private string[] finalLine = {
@@ -106,11 +106,11 @@ public class FinalSceneManager : MonoBehaviour
 
                 if(currentState == CutsceneState.DiaryLines)
                 {
-                    if (currentLine == 0)
+                    if (currentLine == 1)
                     {
                         StartCoroutine(ResizeLetterPanel());
                     }
-                    else if (currentLine == 1)
+                    else if (currentLine == 2)
                     {
                         panelLetter.SetActive(false);
                     }

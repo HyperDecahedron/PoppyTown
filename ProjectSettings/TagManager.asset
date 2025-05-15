@@ -9,6 +9,7 @@ TagManager:
   - SceneManager
   - FxTemporaire
   - PostProcessing
+  - Time
   layers:
   - Default
   - TransparentFX

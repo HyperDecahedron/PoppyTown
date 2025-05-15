@@ -1,19 +1,12 @@
-GAME: MAXIMAZED AND FREE ASPECT
+GAME: MAXIMAZED AND FREE ASPECT, VOLUMEN 50
 
-try build again
-quitar que puedan pulsar la e en la cutscene
-aumentar tiempo del juego a 12 min
-quitar poppy script de los poppies del final scene
-ajustar text box del newspaper y villagers
-desactivar objeto tiempo en el final scene
-no se ve el diario en final scene
-----
+Implementar mapa dia/noche mayor house
 
-Añadir animacion dante
+Añadir luz de los candles a la escena final
 
 Añadir imagenes dialogos
 
-Implementar mapa dia/noche
+Implementar mapa dia/noche Poppy Town y Forest
 
 ----------- done pero no actualizado en github
 Probar build y solucionar bugs
@@ -40,6 +33,16 @@ Salta a la final scene si: player llega al estado 6 y va a su casa o si son las 
 		- hablado con belzy sobre mary?
 		- hablado con polina o dante sobre mary?
 		- Y DAR NOTA FINAL SEGÚN TODO LO QUE HAYAN HECHO? grade ABCDE
+
+debug:
+quitar que puedan pulsar la e en la cutscene
+quitar poppy script de los poppies del final scene
+ajustar text box del newspaper y villagers
+desactivar objeto tiempo en el final scene
+no se ve el diario en final scene
+hacer mas grande texto moral meter
+
+Añadir animacion dante
 
 ----------- done
 Subir github

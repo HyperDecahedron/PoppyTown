@@ -25,6 +25,18 @@ public class ChangeToScene : MonoBehaviour
                 {
                     if(changeToScene == "MCHouseScene" && playerController.state >= 6)
                     {
+                        // first, stop time
+                        GameObject time = GameObject.FindGameObjectWithTag("Time");
+                        if (time != null)
+                        {
+                            GameTimeManager timeManager = time.GetComponent<GameTimeManager>();
+                            timeManager.stopTime = true;
+                            time.SetActive(false);
+                        }
+                        else
+                        {
+                            Debug.Log("Time not found when changing to Final Scene.");
+                        }
                         sceneChanger.triggerCollision("FinalScene");
                     }
                     else
@@ -38,10 +50,6 @@ public class ChangeToScene : MonoBehaviour
             else
                 Debug.Log("PlayerController component not found on the Player!");
 
-            /*if (sceneChanger != null)
-                sceneChanger.triggerCollision(changeToScene);
-            else
-                Debug.Log("SceneChanger reference is missing!");*/
         }
     }
 

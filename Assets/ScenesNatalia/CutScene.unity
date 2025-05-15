@@ -682,8 +682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 493.847, y: 148.9058}
-  m_SizeDelta: {x: 61.6384, y: 36.4525}
+  m_AnchoredPosition: {x: 486.67, y: 143.9317}
+  m_SizeDelta: {x: 78.727, y: 48.3261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281344998
 MonoBehaviour:
@@ -707,11 +707,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
-    m_FontSize: 35
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 45
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3607,7 +3607,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.197917
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3632,7 +3632,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.673918, y: 0.025870085, z: -10}
+  m_LocalPosition: {x: -11.418419, y: -1.2960199, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5592,7 +5592,7 @@ GameObject:
   - component: {fileID: 1157929576}
   m_Layer: 5
   m_Name: Time
-  m_TagString: Untagged
+  m_TagString: Time
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5642,6 +5642,7 @@ MonoBehaviour:
   stage2Volume: {fileID: 1521751734310416535}
   stage3Volume: {fileID: 1410483412639807264}
   volumeFadeDuration: 7
+  stopTime: 0
 --- !u!1 &1158899989
 GameObject:
   m_ObjectHideFlags: 0

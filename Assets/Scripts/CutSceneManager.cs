@@ -53,6 +53,8 @@ public class CutSceneManager : MonoBehaviour
 
     private PlayerController playerController;
 
+    private bool canPressE = true;
+
     void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
@@ -84,7 +86,7 @@ public class CutSceneManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canPressE)
         {
             if (isTyping) return;
 
@@ -166,6 +168,7 @@ public class CutSceneManager : MonoBehaviour
         }
 
         // fake player movement to the right
+        canPressE = false;
         playerController.FakeRightMovement();
     }
 
