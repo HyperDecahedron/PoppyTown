@@ -1,12 +1,8 @@
 GAME: MAXIMAZED AND FREE ASPECT, VOLUMEN 50
 
-Implementar mapa dia/noche mayor house
+Acabar de añadir imagen de dialogo de blezy creepy
 
-Añadir luz de los candles a la escena final
-
-Añadir imagenes dialogos
-
-Implementar mapa dia/noche Poppy Town y Forest
+Implementar mapa dia/noche Poppy Town y Forest, junto con mapa dia/noche mayor house
 
 ----------- done pero no actualizado en github
 Probar build y solucionar bugs
@@ -43,6 +39,8 @@ no se ve el diario en final scene
 hacer mas grande texto moral meter
 
 Añadir animacion dante
+Añadir luz de los candles a la escena final
+Añadir imagenes dialogos: la primera vez que habla con un personaje esta blush, si no, esta normal sin blush. el personaje muestra sonrisa si es befriend o si quiere esconder algo
 
 ----------- done
 Subir github

@@ -96,7 +96,7 @@ public class Dante : MonoBehaviour
                     else if (playerController.state == 2)
                     {
                         // finished farming task, waiting to accept fountain task
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "dante");
                     }
                     else if (playerController.state == 3)
                     {
@@ -106,7 +106,7 @@ public class Dante : MonoBehaviour
                     else if (playerController.state == 4)
                     {
                         // finished fountain task, waiting to accept harvest
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "dante");
                     }
                     else if (playerController.state == 5)
                     {
@@ -116,7 +116,7 @@ public class Dante : MonoBehaviour
                     else if (playerController.state == 6)
                     {
                         // finished all tasks
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "dante");
                     }
                 }
 
@@ -125,7 +125,7 @@ public class Dante : MonoBehaviour
                     if (playerController.state == 0)
                     {
                         // waiting to accept farming
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "polina");
                     }
                     else if (playerController.state == 1)
                     {
@@ -145,7 +145,7 @@ public class Dante : MonoBehaviour
                     else if(playerController.state == 4)
                     {
                         // finished fountain task, waiting to accept harvest
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "polina");
                     }
                     else if (playerController.state == 5)
                     {
@@ -155,7 +155,7 @@ public class Dante : MonoBehaviour
                     else if (playerController.state == 6)
                     {
                         // finished all tasks
-                        dialogManager.SetTaskDialog("default_state", "default_state");
+                        dialogManager.SetTaskDialog("default_state", "polina");
                     }
 
                 }

@@ -42,7 +42,7 @@ public class FinalSceneManager : MonoBehaviour
     };
 
     private string[] villagerLine = {
-        "The villagers act like they don't know anything\nabout Mary.Or they say she's fine...\nBut where is she?"
+        "The villagers act like they don't know\nanything about Mary. Or they say she's fine... But where is she?"
     };
 
     private string[] finalLine = {

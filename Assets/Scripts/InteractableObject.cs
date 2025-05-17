@@ -89,6 +89,7 @@ public class InteractableObject : MonoBehaviour
             {
                 Ebutton.SetActive(false);
                 audioSource.PlayOneShot(button_sound, 0.8f);
+                dialogManager.show_character = false;
                 playerInRange = false;
 
                 if (name != "fountain1" && name != "fountain2" && name != "fountain3")
