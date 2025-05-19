@@ -95,19 +95,28 @@ public class GameTimeManager : MonoBehaviour
             if (newSprite != null)
                 sunImage.sprite = newSprite;
 
-            // Update creepiness at 15 and at 20 in the same day
+            // Update creepiness 
             if (hours == 15 && minutes == 00 && creepiness < 3)
             {
-                creepiness++; // update every night at 3
+                creepiness++; 
                 SetStage();
+            }
+            else if (hours == 18 && minutes == 00)
+            {
+                playerController.startCreepy = true;
+                // change map
+                GameObject light = GameObject.FindGameObjectWithTag("LightDarkChanger");
+                LightDarkChanger lightChanger = light.GetComponent<LightDarkChanger>();
+                if (!lightChanger.isDark)
+                    lightChanger.SetDarkMapGlitch();
             }
             else if (hours == 20 && minutes == 00 && creepiness < 3)
             {
-                creepiness++; // update every night at 3
+                creepiness++; 
                 playerController.startCreepy = true;
                 SetStage();
             }
-            else if (hours == 23 && minutes == 0)
+            else if (hours == 23 && minutes == 00)
             {
                 GameObject sceneManagerObj = GameObject.FindGameObjectWithTag("SceneManager");
                 if (sceneManagerObj != null)

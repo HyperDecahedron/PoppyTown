@@ -11,6 +11,7 @@ TagManager:
   - PostProcessing
   - Time
   - mainCanvas
+  - LightDarkChanger
   layers:
   - Default
   - TransparentFX

@@ -18,24 +18,24 @@ public class poppy_script : MonoBehaviour
 
             if (setActiveAfter5)
             {
-                if (playerController.state < 5)
+                if (playerController.state > 5 || playerController.startCreepy)
                 {
-                    this.gameObject.SetActive(false);
+                    this.gameObject.SetActive(true);
                 }
                 else
                 {
-                    this.gameObject.SetActive(true);
+                    this.gameObject.SetActive(false);
                 }
             }
             else
             {
-                if (playerController.state < 5)
+                if (playerController.state > 5 || playerController.startCreepy)
                 {
-                    this.gameObject.SetActive(true);
+                    this.gameObject.SetActive(false);
                 }
                 else
                 {
-                    this.gameObject.SetActive(false);
+                    this.gameObject.SetActive(true);
                 }
             }
 

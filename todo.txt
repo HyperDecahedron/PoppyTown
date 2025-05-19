@@ -1,7 +1,5 @@
 GAME: MAXIMAZED AND FREE ASPECT, VOLUMEN 50
 
-Implementar mapa dia/noche Poppy Town y Forest, junto con mapa dia/noche mayor house
-
 ----------- done pero no actualizado en github
 Probar build y solucionar bugs
 Añadir canción al inicio de la pantalla de intro
@@ -46,6 +44,9 @@ no pone save me!
 Quitar el dialogo cuando aparece el final scene!
 Acabar de añadir imagen de dialogo de blezy creepy
 
+Implementar mapa dia/noche Poppy Town y Forest, junto con mapa dia/noche mayor house
+
+SUBIDO A ITCH IO
 ----------- done
 Subir github
 Acabar escenas

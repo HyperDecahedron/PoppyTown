@@ -126,7 +126,7 @@ public class DialogManager : MonoBehaviour
      /*0*/   "Hey Delilah! Could you maybe assist me with something? If it's not too much of an issue that is!", // 
      /*1*/   "Sure, what do you need?", // 
      /*2*/   "Sorry, not right now", //
-     /*3*/   "Oh, thank you! Our fountain needs some cleaning up, more than I was able to do yesterday. Please grab a <b>sponge</b> and <b>clean away any grime on the fountains to the north</b>!", // 
+     /*3*/   "Oh, thank you! Our fountain needs some cleaning up, more than I was able to do yesterday. Please grab a <b>sponge</b> and <b>clean away any grime on the fountains to the north</b>! Come back when you finish!", // 
      /*4*/   "Oh, well that's okay. I guess I can try to manage on my own...",  
    };
 
@@ -657,9 +657,12 @@ public class DialogManager : MonoBehaviour
 
         else if(character == "belzy")
         {
-            if(task == "default_belzy")
+            GameObject light = GameObject.FindGameObjectWithTag("LightDarkChanger");
+            LightDarkChanger lightChanger = light.GetComponent<LightDarkChanger>();
+
+            if (task == "default_belzy")
             {
-                if(playerController.state >= 5)
+                if (playerController.state >= 5 || lightChanger.isDark)
                     SetCharacter(belzy_creepy, mc_neutral);
                 else
                     SetCharacter(belzy_neutral, mc_neutral);
@@ -670,7 +673,7 @@ public class DialogManager : MonoBehaviour
                 {
                     if (selected == 1)
                     {
-                        if (playerController.state >= 5)
+                        if (playerController.state >= 5 || lightChanger.isDark)
                             SetCharacter(belzy_creepy, mc_neutral_blush);
                         else
                             SetCharacter(belzy_joy, mc_neutral_blush);
@@ -684,7 +687,7 @@ public class DialogManager : MonoBehaviour
                         moralMeter.UpdateReputation(-5);
                         playerController.has_talked_belzy = true;
 
-                        if (playerController.state >= 5)
+                        if (playerController.state >= 5 || lightChanger.isDark)
                             SetCharacter(belzy_creepy, mc_worry);
                         else
                             SetCharacter(belzy_neutral, mc_worry);
@@ -694,7 +697,7 @@ public class DialogManager : MonoBehaviour
                         StartCoroutine(WaitForOptionSelection((selected) =>
                         {
                             // the selected option does not matter
-                            if (playerController.state >= 5)
+                            if (playerController.state >= 5 || lightChanger.isDark)
                                 SetCharacter(belzy_creepy, mc_worry);
                             else
                                 SetCharacter(belzy_neutral, mc_worry);
@@ -703,7 +706,7 @@ public class DialogManager : MonoBehaviour
 
                             StartCoroutine(WaitForOptionSelection((selected) =>
                             {
-                                if (playerController.state >= 5)
+                                if (playerController.state >= 5 || lightChanger.isDark)
                                     SetCharacter(belzy_creepy, mc_worry);
                                 else
                                     SetCharacter(belzy_joy, mc_worry);
@@ -724,14 +727,21 @@ public class DialogManager : MonoBehaviour
             
             else if(task == "farming")
             {
-                SetCharacter(belzy_neutral, mc_neutral_blush);
+                if (lightChanger.isDark)
+                    SetCharacter(belzy_creepy, mc_neutral_blush);
+                else
+                    SetCharacter(belzy_neutral, mc_neutral_blush);
+
                 SetDialog(belzy_farming[0], belzy_farming[1], belzy_farming[2]);
 
                 StartCoroutine(WaitForOptionSelection((selected) =>
                 {
                     if (selected == 1)
                     {
-                        SetCharacter(belzy_joy, mc_neutral);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_neutral);
+                        else
+                            SetCharacter(belzy_joy, mc_neutral);
                         SetDialog(belzy_farming[3]);
 
                         moralMeter.UpdateReputation(5);
@@ -741,25 +751,37 @@ public class DialogManager : MonoBehaviour
                         moralMeter.UpdateReputation(-5);
                         playerController.has_talked_belzy = true;
 
-                        SetCharacter(belzy_neutral, mc_worry);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_worry);
+                        else
+                            SetCharacter(belzy_neutral, mc_worry);
                         SetDialog(belzy_farming[4], belzy_farming[5], belzy_farming[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
                         {
                             // the selected option does not matter
-                            SetCharacter(belzy_neutral, mc_worry);
+                            if (lightChanger.isDark)
+                                SetCharacter(belzy_creepy, mc_worry);
+                            else
+                                SetCharacter(belzy_neutral, mc_worry);
                             SetDialog(belzy_farming[7], belzy_farming[9], belzy_farming[10]);
 
                             StartCoroutine(WaitForOptionSelection((selected) =>
                             {
                                 if (selected == 1)
                                 {
-                                    SetCharacter(belzy_joy, mc_worry);
+                                    if (lightChanger.isDark)
+                                        SetCharacter(belzy_creepy, mc_worry);
+                                    else
+                                        SetCharacter(belzy_joy, mc_worry);
                                     SetDialog(belzy_farming[11]);
                                 }
                                 else if (selected == 2)
                                 {
-                                    SetCharacter(belzy_joy, mc_worry);
+                                    if (lightChanger.isDark)
+                                        SetCharacter(belzy_creepy, mc_worry);
+                                    else
+                                        SetCharacter(belzy_joy, mc_worry);
                                     SetDialog(belzy_farming[12]);
                                 }
                             }));
@@ -770,14 +792,20 @@ public class DialogManager : MonoBehaviour
 
             else if (task == "fountain")
             {
-                SetCharacter(belzy_neutral, mc_neutral);
+                if (lightChanger.isDark)
+                    SetCharacter(belzy_creepy, mc_neutral);
+                else
+                    SetCharacter(belzy_neutral, mc_neutral);
                 SetDialog(belzy_fountain[0], belzy_fountain[1], belzy_fountain[2]);
 
                 StartCoroutine(WaitForOptionSelection((selected) =>
                 {
                     if (selected == 1)
                     {
-                        SetCharacter(belzy_joy, mc_neutral);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_neutral);
+                        else
+                            SetCharacter(belzy_joy, mc_neutral);
                         SetDialog(belzy_fountain[3]);
 
                         moralMeter.UpdateReputation(5);
@@ -787,25 +815,38 @@ public class DialogManager : MonoBehaviour
                         moralMeter.UpdateReputation(-5);
                         playerController.has_talked_belzy = true;
 
-                        SetCharacter(belzy_neutral, mc_worry);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_neutral);
+                        else
+                            SetCharacter(belzy_joy, mc_neutral);
                         SetDialog(belzy_fountain[4], belzy_fountain[5], belzy_fountain[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
                         {
                             // the selected option does not matter
-                            SetCharacter(belzy_neutral, mc_worry);
+                            if (lightChanger.isDark)
+                                SetCharacter(belzy_creepy, mc_worry);
+                            else
+                                SetCharacter(belzy_neutral, mc_worry);
                             SetDialog(belzy_fountain[7], belzy_fountain[9], belzy_fountain[10]);
 
                             StartCoroutine(WaitForOptionSelection((selected) =>
                             {
                                 if (selected == 1)
                                 {
-                                    SetCharacter(belzy_joy, mc_neutral);
+
+                                    if (lightChanger.isDark)
+                                        SetCharacter(belzy_creepy, mc_neutral);
+                                    else
+                                        SetCharacter(belzy_joy, mc_neutral);
                                     SetDialog(belzy_fountain[11]);
                                 }
                                 else if (selected == 2)
                                 {
-                                    SetCharacter(belzy_joy, mc_neutral);
+                                    if (lightChanger.isDark)
+                                        SetCharacter(belzy_creepy, mc_neutral);
+                                    else
+                                        SetCharacter(belzy_joy, mc_neutral);
                                     SetDialog(belzy_fountain[12]);
                                 }
                             }));
@@ -816,24 +857,38 @@ public class DialogManager : MonoBehaviour
 
             else if (task == "harvest")
             {
-                SetCharacter(belzy_neutral, mc_neutral_blush);
+                if(lightChanger.isDark)
+                    SetCharacter(belzy_creepy, mc_neutral_blush);
+                else
+                    SetCharacter(belzy_neutral, mc_neutral_blush);
+
                 SetDialog(belzy_harvest[0], belzy_harvest[1], belzy_harvest[2]);
 
                 StartCoroutine(WaitForOptionSelection((selected) =>
                 {
                     if (selected == 1)
                     {
-                        SetCharacter(belzy_joy, mc_joy_blush);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_joy_blush);
+                        else
+                            SetCharacter(belzy_joy, mc_joy_blush);
+
                         SetDialog(belzy_harvest[3], null, null, false);
 
                         playerController.state = 5;
                         Debug.Log("player state = " + playerController.state);
 
+                        lightChanger.SetDarkMapGlitch();
+                        playerController.startCreepy = true;
+
                         moralMeter.UpdateReputation(10);
                     }
                     else if (selected == 2)
                     {
-                        SetCharacter(belzy_neutral, mc_neutral);
+                        if (lightChanger.isDark)
+                            SetCharacter(belzy_creepy, mc_neutral);
+                        else
+                            SetCharacter(belzy_neutral, mc_neutral);
                         SetDialog(belzy_harvest[4]);
 
                         moralMeter.UpdateReputation(-5);
