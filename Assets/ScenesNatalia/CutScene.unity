@@ -3607,7 +3607,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.984375
+  orthographic size: 4.0546875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3632,7 +3632,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.948575, y: -1.8116499, z: -10}
+  m_LocalPosition: {x: -13.870601, y: -1.7413299, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8609,7 +8609,7 @@ MonoBehaviour:
   MC_image: {fileID: 2105277396}
   belzy_joy: {fileID: 21300000, guid: 1b37adc5665908e4d8cfaa65a2199e64, type: 3}
   belzy_neutral: {fileID: 21300000, guid: c0e20a53c1a98d042b41cd04ff85a0f5, type: 3}
-  belzy_creepy: {fileID: 21300000, guid: 1b37adc5665908e4d8cfaa65a2199e64, type: 3}
+  belzy_creepy: {fileID: 21300000, guid: f25cbcc2d06f19947aba3e8ceb84cf15, type: 3}
   polina_joy: {fileID: 21300000, guid: 231223d7179cc6b47b37255bf77fdf9d, type: 3}
   polina_neutral: {fileID: 21300000, guid: 45b8da1fdb5d9674a81294bc963da709, type: 3}
   dante_joy: {fileID: 21300000, guid: 1cfe02e3ba77f2f4c963f4251dc1acd4, type: 3}
@@ -8951,7 +8951,7 @@ MonoBehaviour:
     Vines
     nourish our thirst.
 
-    An ethereal feast.
+    Ethereal feast.
 
 
     My mind, quiet.
@@ -9446,7 +9446,7 @@ GameObject:
   - component: {fileID: 1207089928190113186}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: mainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

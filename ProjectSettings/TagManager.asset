@@ -10,6 +10,7 @@ TagManager:
   - FxTemporaire
   - PostProcessing
   - Time
+  - mainCanvas
   layers:
   - Default
   - TransparentFX

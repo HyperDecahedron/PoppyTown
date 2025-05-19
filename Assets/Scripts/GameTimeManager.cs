@@ -129,6 +129,17 @@ public class GameTimeManager : MonoBehaviour
                 }
 
                 this.gameObject.SetActive(false); // Deactivate this GameObject
+
+                // then set inactive main canvas
+                GameObject canvas = GameObject.FindGameObjectWithTag("mainCanvas");
+                if (canvas != null)
+                {
+                    canvas.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("Main Canvas not found when changing to Final Scene.");
+                }
             }
 
 

@@ -659,14 +659,22 @@ public class DialogManager : MonoBehaviour
         {
             if(task == "default_belzy")
             {
-                SetCharacter(belzy_neutral, mc_neutral);
+                if(playerController.state >= 5)
+                    SetCharacter(belzy_creepy, mc_neutral);
+                else
+                    SetCharacter(belzy_neutral, mc_neutral);
+
                 SetDialog(default_belzy[0], default_belzy[1], default_belzy[2]);
 
                 StartCoroutine(WaitForOptionSelection((selected) =>
                 {
                     if (selected == 1)
                     {
-                        SetCharacter(belzy_joy, mc_neutral_blush);
+                        if (playerController.state >= 5)
+                            SetCharacter(belzy_creepy, mc_neutral_blush);
+                        else
+                            SetCharacter(belzy_joy, mc_neutral_blush);
+
                         SetDialog(default_belzy[3]);
 
                         moralMeter.UpdateReputation(5);
@@ -676,25 +684,36 @@ public class DialogManager : MonoBehaviour
                         moralMeter.UpdateReputation(-5);
                         playerController.has_talked_belzy = true;
 
-                        SetCharacter(belzy_neutral, mc_worry);
+                        if (playerController.state >= 5)
+                            SetCharacter(belzy_creepy, mc_worry);
+                        else
+                            SetCharacter(belzy_neutral, mc_worry);
+
                         SetDialog(default_belzy[4], default_belzy[5], default_belzy[6]);
 
                         StartCoroutine(WaitForOptionSelection((selected) =>
                         {
                             // the selected option does not matter
-                            SetCharacter(belzy_neutral, mc_worry);
+                            if (playerController.state >= 5)
+                                SetCharacter(belzy_creepy, mc_worry);
+                            else
+                                SetCharacter(belzy_neutral, mc_worry);
+
                             SetDialog(default_belzy[7], default_belzy[9], default_belzy[10]);
 
                             StartCoroutine(WaitForOptionSelection((selected) =>
                             {
+                                if (playerController.state >= 5)
+                                    SetCharacter(belzy_creepy, mc_worry);
+                                else
+                                    SetCharacter(belzy_joy, mc_worry);
+
                                 if (selected == 1)
                                 {
-                                    SetCharacter(belzy_joy, mc_worry);
                                     SetDialog(default_belzy[11]);
                                 }
                                 else if (selected == 2)
                                 {
-                                    SetCharacter(belzy_joy, mc_worry);
                                     SetDialog(default_belzy[12]);
                                 }
                             }));
@@ -824,7 +843,7 @@ public class DialogManager : MonoBehaviour
 
             else if (task == "harvest2")
             {
-                SetCharacter(belzy_joy, mc_neutral);
+                SetCharacter(belzy_creepy, mc_neutral);
                 SetDialog(belzy_harvest2[0], belzy_harvest2[1], belzy_harvest2[2]);
 
                 StartCoroutine(WaitForOptionSelection((selected) =>
@@ -835,7 +854,7 @@ public class DialogManager : MonoBehaviour
                         {
                             // all items
                             playerController.tasks++;
-                            SetCharacter(belzy_joy, mc_joy_blush);
+                            SetCharacter(belzy_creepy, mc_joy_blush);
                             SetDialog(belzy_harvest2[4]);
                             playerController.state = 6;
                             Debug.Log("player state = " + playerController.state);
@@ -845,7 +864,7 @@ public class DialogManager : MonoBehaviour
                         else
                         {
                             // missing items
-                            SetCharacter(belzy_neutral, mc_worry_blush);
+                            SetCharacter(belzy_creepy, mc_worry_blush);
                             SetDialog(belzy_harvest2[3]);
 
                             moralMeter.UpdateReputation(-5);
@@ -853,7 +872,7 @@ public class DialogManager : MonoBehaviour
                     }
                     else if (selected == 2)
                     {
-                        SetCharacter(belzy_neutral, mc_worry_blush);
+                        SetCharacter(belzy_creepy, mc_worry_blush);
                         SetDialog(belzy_harvest2[5]);
 
                         moralMeter.UpdateReputation(-5);
